@@ -58,6 +58,32 @@ header ul {
     border-radius: 1rem;
 }
 
+.input-div {
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    top: 7rem;
+}
+
+.input-div > input {
+    height: 2rem;
+    border-radius: 1rem;
+    border: 2px solid #2274A5;
+    width: 15rem;
+    padding-left: 2.75rem;
+    font-size: large;
+    color: #0044ff;
+    z-index: 100;
+}
+
+.input-div > svg {
+    position: absolute;
+    margin-left: 0.5rem;
+    margin-top: 4px;
+    z-index: 1;
+    pointer-events: none; /*leae here => was causing trouble when selecting input*/
+}
+
 .dots {
     display: none;
 }
@@ -75,6 +101,17 @@ header ul {
         width: 100%;
         margin-left: auto;
         margin-right: 0.5rem;
+    }
+
+    .input-div {
+        top: 9rem;
+        margin-top: -0.5rem;
+        margin-right: 1.5rem;
+        margin-left: auto;
+    }
+
+    .input-div > input {
+        border-color: #F1C40F;
     }
     
 }
@@ -110,7 +147,21 @@ header ul {
 
     header img {
         width: 15rem;
-    }    
+    }
+
+    .input-div {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        margin-top: -1rem;
+        margin-right: 1.5rem;
+        margin-left: auto;
+    }
+
+    .input-div > input {
+        border-color: #F1C40F;
+    }
 }
 
 @media only screen and (min-width: 1300px) {
