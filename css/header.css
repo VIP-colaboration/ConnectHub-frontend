@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
 a {
     text-decoration: none;
-    color: #FF9F1C;
+    color: #F1C40F;
 }
 
 header {
@@ -8,10 +10,10 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #2EC4B6;
+    background-color: #2274A5;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    color: #FF9F1C;
+    color: #F1C40F;
     font-size: larger;
 }
 
@@ -51,8 +53,8 @@ header ul {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
-    background-color: #2EC4B6;
-    border: 2px solid #FF9F1C;
+    background-color: #2274A5;
+    border: 2px solid #F1C40F;
     border-radius: 1rem;
 }
 
@@ -97,7 +99,7 @@ header ul {
     }
 
     header li {
-        border: 2px solid #FF9F1C;
+        border: 2px solid #F1C40F;
         border-radius: 0.25rem;
         padding: 0.25rem;
         font-size: larger;
@@ -108,9 +110,7 @@ header ul {
 
     header img {
         width: 15rem;
-    }
-
-    
+    }    
 }
 
 @media only screen and (min-width: 1300px) {
@@ -121,7 +121,6 @@ header ul {
         margin-left: auto;
         margin-right: auto;
     }
-    
 }
 
 @media only screen and (min-width: 1920px) {
@@ -129,7 +128,7 @@ header ul {
         right: 1.5rem
     }
     header li {
-        border: 2px solid #FF9F1C;
+        border: 2px solid #F1C40F;
         border-radius: 0.25rem;
         padding: 0.25rem;
         font-size: 2rem;
