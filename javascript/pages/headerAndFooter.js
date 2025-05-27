@@ -14,7 +14,7 @@ function headerMaker () {
     const account = document.createElement("li");
     const dots = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 
-    logo.src = "../logos/connectihubsimplewithpath.png"
+    logo.src = "../logos/connecthubtext.png"
     linkHome.href = "index.html";
     bulletinBoard.innerHTML = '<a href="bulletin-board.htlm">Bulletin Board</a>';
     friends.innerHTML = '<a href="friends.htlm">Friends</a>';
