@@ -15,6 +15,7 @@ header {
     padding-bottom: 0.5rem;
     color: #F1C40F;
     font-size: larger;
+    
 }
 
 header img {
@@ -74,6 +75,7 @@ header ul {
     font-size: large;
     color: #0044ff;
     z-index: 100;
+    font-family: "Roboto Condensed", sans-serif;
 }
 
 .input-div > svg {

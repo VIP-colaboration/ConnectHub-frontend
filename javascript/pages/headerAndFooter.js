@@ -1,5 +1,6 @@
 
 headerMaker();
+footerMaker();
 
 function headerMaker () {
     const header = document.createElement("header");
@@ -140,6 +141,10 @@ function headerMaker () {
     hamburger.addEventListener("click", () => {
         navBar.classList.toggle("hidden")
     })
+}
+
+function footerMaker() {
+  
 }
 
 function addSearchInput () {
