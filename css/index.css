@@ -1,0 +1,42 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#registerBtn {
+    margin-left: auto;
+    margin-right: 1rem;
+}
+
+#indexTitle {
+    flex: 1;
+    width: 100%;
+    text-align: center;
+}
+
+
+#indexTitle > p {
+    width: 100%;
+    text-align: center;
+    font-size: 3rem;
+    color: #2274A5;
+}
+
+#login {
+    background-color: #2274A5;
+    padding: 1rem;
+    width: 100%;
+}
+
+#login input {
+    height: 3rem;
+    font-size: 1.5rem;
+    width: 30%;
+}
+
+#login > form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
