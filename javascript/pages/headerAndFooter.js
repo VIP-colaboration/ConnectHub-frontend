@@ -152,7 +152,7 @@ function footerMaker() {
   copyright.textContent = "© Connect Hub 2025";
   infoLink.href = "info.html";
   infoSymbol.innerHTML = `
-    <svg height="48px" width="48px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+    <svg height="48px" width="48px" version="1.1" id="infoSymbol" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
       viewBox="0 0 23.625 23.625" xml:space="preserve">
     <g>
       <path style="fill:#F1C40F;" d="M11.812,0C5.289,0,0,5.289,0,11.812s5.289,11.813,11.812,11.813s11.813-5.29,11.813-11.813
