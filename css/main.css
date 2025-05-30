@@ -15,3 +15,49 @@ body {
 main {
     flex: 1;
 }
+
+#toast {
+    visibility: hidden;
+    min-width: 20rem; 
+    max-width: 50rem;
+    margin-left: -125px;
+    background-color: #2274A5; 
+    color: #F1C40F;
+    text-align: center;
+    border: 2px solid #F1C40F;
+    border-radius: 0.5rem;
+    box-shadow: 4px 6px 15px rgba(241, 196, 15, 0.8);
+    padding: 0.5rem;
+    position: fixed;
+    z-index: 100;
+    left: 20rem; 
+    right: 20rem;
+    top: 10%;
+    font-size: 2rem;
+}
+
+#toast.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {top: 0; opacity: 0;} 
+  to {top: 10%; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;} 
+  to {top: 10%; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {top: 10%; opacity: 1;} 
+  to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {top: 10%; opacity: 1;} 
+  to {top: 0; opacity: 0;}
+}

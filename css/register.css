@@ -31,7 +31,7 @@ section > p {
     gap: 1rem;
 }
 
-#registerSection > form {
+#registerSection > div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,7 +65,7 @@ section > p {
         max-width: 30rem;
     }
 
-    #registerSection > form {
+    #registerSection > div {
         min-width: 30rem;
         padding: 1rem;
         display: grid;
@@ -115,7 +115,7 @@ section > p {
         max-width: 44rem;
     }
 
-    #registerSection > form {
+    #registerSection > div {
         min-width: 43rem;
         padding: 1rem;
         display: grid;
