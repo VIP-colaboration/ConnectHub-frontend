@@ -5,11 +5,23 @@ section {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-top: 1rem;
     margin-bottom: 2rem;
 }
 
+section > h1 {
+    font-size: 2rem;
+}
+
+:where(h1) { /*to statisfy mozzila regarding compatibility of sectioned h1 with older browser*/
+  margin-block: 0.67em;
+  font-size: 2em;
+}
+
+
 section > p {
     font-size: 1.5rem;
+    max-width: 40rem;
 }
 
 #registerSection {
@@ -28,6 +40,7 @@ section > p {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     width: 95%;
+    max-width: 20rem;
     border-radius: 1rem;
     height: 70%;
     gap: 1rem;
@@ -38,4 +51,108 @@ section > p {
     font-size: 1.5rem;
     width: 90%;
     border-radius: 1rem;
+}
+
+/* ------------------------------------------- SCREEN RESOLUTIONS ----------------------------------------------*/
+@media only screen and (min-width: 1024px) {
+    section > img {
+        width: 35rem;
+    }
+
+    #registerSection {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 30rem;
+    }
+
+    #registerSection > form {
+        min-width: 30rem;
+        padding: 1rem;
+        display: grid;
+        grid-template-columns: 14rem 14rem;
+        grid-template-rows: 3rem 3rem 3rem;
+    }
+
+    #usernameInput {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+
+    #passwordInput {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+
+    #confirmPasswordInput {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+
+    #registerBtn {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 3;
+        grid-row-end: 4;
+        width: 8rem;
+        justify-self: flex-end;
+        margin-right: 1rem;
+    }
+
+    #registerSection > a {
+        margin-right: 1rem;
+        margin-left: auto;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    #registerSection {
+        max-width: 44rem;
+    }
+
+    #registerSection > form {
+        min-width: 43rem;
+        padding: 1rem;
+        display: grid;
+        grid-template-columns: 14rem 14rem 14rem;
+        grid-template-rows: 3rem 3rem;
+    }
+
+    #usernameInput {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+
+    #passwordInput {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+
+    #confirmPasswordInput {
+        grid-column-start: 3;
+        grid-column-end: 4;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+
+    #registerBtn {
+        grid-column-start: 3;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: 3;
+        margin-right: 1rem;
+    }
+
+    #registerSection > a {
+        margin-right: 0.5rem;
+    }
 }
