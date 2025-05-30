@@ -1,0 +1,41 @@
+section {
+    color: #F75C03;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+section > p {
+    font-size: 1.5rem;
+}
+
+#registerSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+#registerSection > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #2274A5;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    width: 95%;
+    border-radius: 1rem;
+    height: 70%;
+    gap: 1rem;
+}
+
+#registerSection input {
+    height: 3rem;
+    font-size: 1.5rem;
+    width: 90%;
+    border-radius: 1rem;
+}

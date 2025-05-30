@@ -43,6 +43,7 @@ main {
     height: 3rem;
     font-size: 1.5rem;
     width: 100%;
+    border-radius: 1rem;
 }
 
 #login > form {
