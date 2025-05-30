@@ -24,5 +24,14 @@ function register() {
         showToast("Your passwords do not match. Please try again.")
         return;
     }
-    
+
+    fetch("https://localhost:8080/ping", {
+        method: "GET"
+    })
+    .then(resp => {
+        if (!resp.ok) {
+            showToast(resp.status + ": " + resp.text);
+        }
+        showToast(resp.text);12
+    })
 }
