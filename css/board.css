@@ -87,6 +87,7 @@
 
 .post-content {
     margin-top: auto;
+    margin-bottom: 0.25rem;
     width: 90%;
     text-indent: 0.5rem;
     padding: 0.5rem;
@@ -94,6 +95,7 @@
     color: #2274A5;
     font-size: 1.5rem;
     border-radius: 1rem;
+    display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -112,7 +114,7 @@
 }
 
 .like-or-comment-div {
-    background-color: #F1C40F;
+    background-color: rgba(241, 196, 15, 0.8);
     border-radius: 1.25rem;
     height: 2.5rem;
     width: 5rem;
