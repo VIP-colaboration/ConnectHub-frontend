@@ -7,9 +7,7 @@ const confirmPasswordField = document.getElementById("confirmPasswordInput");
 
 registerButton.addEventListener("click", register);
 
-function register() {
-    console.log(usernameField.value, passwordField.value, confirmPasswordField.value);
-    
+async function register() {    
     if (!usernameField.value) {
         showToast("You haven't filled the username. This is a mandatory field.");
         return;
@@ -25,13 +23,20 @@ function register() {
         return;
     }
 
-    fetch("https://localhost:8080/ping", {
-        method: "GET"
-    })
-    .then(resp => {
-        if (!resp.ok) {
-            showToast(resp.status + ": " + resp.text);
-        }
-        showToast(resp.text);12
-    })
+    let message;
+
+    try {
+        const response = await fetch("http://localhost:8080/register", {
+            method: "POST",
+            body: {
+                "username" : usernameField.value,
+                "password" : passwordField.value,
+            }
+        });
+        message = response.status + " : registration successful, your user ID is " + response.text() + " You can now login.";
+    } catch (error) {
+        message = error.text();
+    }
+
+    showToast(message);
 }
