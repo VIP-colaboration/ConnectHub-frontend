@@ -1,4 +1,5 @@
 import { showToast } from "../pages/main.js";
+import { setToken, removeToken } from "../objects/token.js";
 
 const registerButton = document.getElementById("registerBtn");
 const usernameField = document.getElementById("usernameInput");
@@ -23,20 +24,59 @@ async function register() {
         return;
     }
 
+    const username = usernameField.value
+    const password = passwordField.value
     let message;
-
+    let successful = false;
     try {
         const response = await fetch("http://localhost:8080/register", {
             method: "POST",
-            body: {
-                "username" : usernameField.value,
-                "password" : passwordField.value,
-            }
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                "username" : username,
+                "password" : password,
+            })
         });
-        message = response.status + " : registration successful, your user ID is " + response.text() + " You can now login.";
+        if (!response.ok) {
+            throw new Error(await response.text());
+        }
+        message = response.status + " : registration successful, your user ID is " + await response.text() + " You can now login.";
     } catch (error) {
-        message = error.text();
+        message = error.message;
     }
 
-    showToast(message);
+    setTimeout(function() {
+            showToast(message);
+        }, 3000);
+
+    if (successful) {
+        setTimeout(function() {
+            showToast("You will be redirected to your account page.")
+        }, 3000)
+        
+    }
+
+}
+
+async function performAutoLogin(username, password) {
+    try {
+        const response = await fetch("http://localhost:8080/login", {
+            method: "POST",
+            header: {"Content-Type": "application/json" },
+            body: JSON.stringify({
+                "username" : username,
+                "password" : password,
+            })
+        });
+        
+        if (!response.ok) {
+            throw new Error("This should not be possible... sorry Dave I'm afraid I can't do that");
+        }
+
+        setToken(response.text());
+        window.location.href = "account.html";
+    } catch (error) {
+        setTimeout(showToast(error.message), 3000);
+        window.location.href = "index.html";
+    }
 }
