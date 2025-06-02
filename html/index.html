@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="../css/buttons.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/index.css">
-    <script defer src="../javascript/pages/login.js"></script>
+    <script type="module" src="../javascript/pages/login.js"></script>
+    <script type="module" src="../javascript/pages/main.js"></script>
+    <script type="module" src="../javascript/objects/token.js"></script>
 </head>
 <body>
     <main>
@@ -39,7 +41,7 @@
         </svg>
     </main>
     <section id="login">
-            <form action="login">
+            <form>
                 <input type="text" name="username" id="usernameInput" placeholder="Username">
                 <input type="password" name="password" id="passwordInput" placeholder="password">
                 <button class="primaryBtn" id="loginBtn">Enter</button>
@@ -48,5 +50,6 @@
                 <p>© Connect Hub 2025</p>
             </footer>
     </section>
+    <div id="toast"></div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-import { showToast } from "../pages/main.js";
+import { showToast } from "./pages/main.js";
 import { setToken, removeToken } from "../objects/token.js";
 
 const registerButton = document.getElementById("registerBtn");
