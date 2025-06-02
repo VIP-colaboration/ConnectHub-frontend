@@ -37,10 +37,13 @@ async function register() {
                 "password" : password,
             })
         });
+
         if (!response.ok) {
             throw new Error(await response.text());
         }
+
         message = response.status + " : registration successful, your user ID is " + await response.text() + " You can now login.";
+        successful = true;
     } catch (error) {
         message = error.message;
     }
@@ -51,9 +54,9 @@ async function register() {
 
     if (successful) {
         setTimeout(function() {
-            showToast("You will be redirected to your account page.")
+            showToast("You will be redirected to your account page.");
         }, 3000)
-        
+        performAutoLogin(username, password);
     }
 
 }
@@ -62,18 +65,21 @@ async function performAutoLogin(username, password) {
     try {
         const response = await fetch("http://localhost:8080/login", {
             method: "POST",
-            header: {"Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json" },
             body: JSON.stringify({
                 "username" : username,
                 "password" : password,
             })
         });
         
+        
         if (!response.ok) {
+            console.log("response not ok on login");
+            
             throw new Error("This should not be possible... sorry Dave I'm afraid I can't do that");
         }
-
-        setToken(response.text());
+        const token = await response.text();
+        setToken(token);
         window.location.href = "account.html";
     } catch (error) {
         setTimeout(showToast(error.message), 3000);
