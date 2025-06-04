@@ -7,13 +7,18 @@ const usernameInput = document.getElementById("usernameInput");
 const passwordInput =document.getElementById("passwordInput");
 
 registerBtn.addEventListener("click", goToRegistrationPage);
-loginBtn.addEventListener("click", login);
+loginBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log("trying login");
+    login();
+});
 
 function goToRegistrationPage() {
     window.location.href = "../html/register.html";
 }
 
 async function login() {
+    console.log("login running");
     let message;
     console.log(usernameInput.value + " " + passwordInput.value);
     let username = usernameInput.value;
