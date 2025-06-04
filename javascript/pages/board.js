@@ -4,6 +4,17 @@ const postList = document.getElementById("posts");
 
 getPosts();
 
+const observer = new IntersectionObserver((postCards) =>  {
+    postCards.forEach((postCard) => {
+        if (postCard.isIntersecting) {
+            postCard.target.classList.add("show");
+        }
+    })
+});
+
+const hiddenPostCards = document.querySelectorAll(".hidden");
+hiddenPostCards.forEach((postCard) => observer.observe(postCard));
+
 function getPosts() {
     const posts = [
         new Post(crypto.randomUUID(), "Franko", "2025-05-29 13:06", "Napalm Dreams", "Smells like victory. The air shimmered with heat as the smoke curled skyward. Nothing was left but scorched earth.", [crypto.randomUUID(), crypto.randomUUID()], ["Wild."]),

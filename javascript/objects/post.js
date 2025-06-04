@@ -25,7 +25,7 @@ export class Post {
         const likeCounter = document.createElement("p");
         const commentCounter = document.createElement("p");
 
-        postCard.classList = "post-card";
+        postCard.classList = "post-card hidden";
         postUserCard.classList = "post-user-card";
         postTitle.classList = "post-title";
         postContent.classList = "post-content";
