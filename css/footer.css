@@ -3,10 +3,12 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem  1rem 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     bottom: 0;
     background-color: #2274A5;
     color: #F1C40F;
+    height: fit-content;
 }
 
 footer > a {

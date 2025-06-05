@@ -2,6 +2,12 @@ body {
     color: #2274A5;
 }
 
+.account-display{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .user-logo-and-name {
     display: flex;
     flex-direction: column;
@@ -11,7 +17,11 @@ body {
 }
 
 .user-logo-and-name > img {
-    height: 10rem;
+  background-color: red;
+  height: 10rem;
+  width: 10rem;
+  border-radius: 5rem;
+  object-fit: cover;
 }
 
 .user-logo-and-name > h2 {
@@ -21,20 +31,44 @@ body {
     padding: 0.5rem;
     height: 2rem;
     border-radius: 2rem;
+    vertical-align: middle;
+}
+
+#userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .info-container {
-  margin: 0.5rem;
-    font-size: 1.5rem;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+  margin-top: -0.5rem;
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.stretch {
+  width: 100%;
+  justify-content: space-around;
+  margin-left: 0;
+}
+
+.visibility-mode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#userEmail {
+  font-size: 1rem;
 }
 
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
+  width: 50px;
   height: 34px;
 }
 
@@ -69,11 +103,11 @@ body {
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #2274A5;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #2274A5;
 }
 
 input:checked + .slider:before {
@@ -97,7 +131,51 @@ input:checked + .slider:before {
 }
 
 #itemsToShow {
-  background-color: red;
-  height: 50rem;
+  height: 60rem; /*temporary for design set to applicable view port*/
   width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.for-1300-screens {
+  display: none;
+}
+
+/*--------------------------SCREEN RESOLUTION--------------------------------------------------*/
+@media only screen and (min-width: 1024px) {
+  .account-display{
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .user-section{
+    width: 25%;
+  }
+
+  #itemsToShow {
+    border-left: 1px solid #2274A5;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    overflow: scroll;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+
+  .user-section{
+    width: 35%;
+  }
+
+  .for-1300-screens {
+    display: inline;
+  }
 }

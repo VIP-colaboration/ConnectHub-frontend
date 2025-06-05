@@ -19,7 +19,7 @@ function headerMaker () {
     linkHome.href = "index.html";
     bulletinBoard.innerHTML = '<a href="board.html">Board</a>';
     friends.innerHTML = '<a href="friends.html">Friends</a>';
-    messages.innerHTML = '<a href="messages.html">Messages</a>';
+    messages.innerHTML = '<a href="conversations.html">Conversations</a>';
     account.innerHTML = '<a href="account.html">Account</a>';
     hamburger.innerHTML = `
                 <svg
