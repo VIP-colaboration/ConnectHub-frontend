@@ -98,6 +98,6 @@ input:checked + .slider:before {
 
 #itemsToShow {
   background-color: red;
-  height: 2rem;
+  height: 50rem;
   width: 100%;
 }
