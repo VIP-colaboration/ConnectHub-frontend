@@ -95,3 +95,9 @@ input:checked + .slider:before {
     display: flex;
     flex-wrap: wrap;
 }
+
+#itemsToShow {
+  background-color: red;
+  height: 2rem;
+  width: 100%;
+}
