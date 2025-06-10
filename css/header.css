@@ -57,6 +57,7 @@ header ul {
     background-color: #2274A5;
     border: 2px solid #F1C40F;
     border-radius: 1rem;
+    z-index: 100;
 }
 
 .input-div {

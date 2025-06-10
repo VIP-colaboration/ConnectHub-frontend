@@ -17,7 +17,6 @@ body {
 }
 
 .user-logo-and-name > img {
-  background-color: red;
   height: 10rem;
   width: 10rem;
   border-radius: 5rem;
@@ -130,7 +129,7 @@ input:checked + .slider:before {
     flex-wrap: wrap;
 }
 
-#itemsToShow {
+#userItems {
   height: 60rem; /*temporary for design set to applicable view port*/
   width: 100%;
   padding: 1rem;
@@ -142,6 +141,8 @@ input:checked + .slider:before {
 
 .user-nav {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -161,11 +162,17 @@ input:checked + .slider:before {
     width: 25%;
   }
 
-  #itemsToShow {
+  #userItems {
     border-left: 1px solid #2274A5;
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
     overflow: scroll;
+  }
+
+  .friends-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 
