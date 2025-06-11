@@ -16,11 +16,18 @@ body {
     padding: 1rem;
 }
 
-.user-logo-and-name > img {
+#userProfilePictureInput {
+  display: none; /*hides original button*/
+}
+
+#userPicture {
+  background-image: url("../pictures/std-profile-picture.png");
   height: 10rem;
   width: 10rem;
   border-radius: 5rem;
-  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  border: 3px solid #F1C40F;
 }
 
 .user-logo-and-name > h2 {

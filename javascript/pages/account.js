@@ -37,6 +37,8 @@ userPicture.addEventListener("mouseenter", () => {
     showToast("click to change your profile picture.");
 });
 
+userPicture.addEventListener("click", getFile)
+
 userEmail.addEventListener("mouseenter", () => {
     //test code
     showToast("click to change your email address");
@@ -145,6 +147,12 @@ function ifListNullThenZero(itemList) {
     if (itemList === null || itemList === undefined) {
         return 0;
     }
-
     return itemList.length;
+}
+
+function handleFile(event) {
+    console.log("handle file");
+    // Handle the selected file(s) here
+    const selectedFiles = event.target.files;
+    console.log(selectedFiles);
 }
