@@ -38,6 +38,7 @@ async function login() {
                 message = await response.text();
                 throw new Error(message);
             }
+            
             const token = await response.text();
             setToken(token);
             window.location.href = "account.html";

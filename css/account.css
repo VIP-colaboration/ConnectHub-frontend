@@ -146,6 +146,10 @@ input:checked + .slider:before {
   gap: 1rem;
 }
 
+.cursor {
+  cursor: pointer;
+}
+
 .for-1300-screens {
   display: none;
 }

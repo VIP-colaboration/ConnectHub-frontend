@@ -1,8 +1,8 @@
 export function showToast(message) {
-        const toastiv = document.getElementById("toast");
-        toastiv.textContent = message;
-        toastiv.className = "show";
+        const toastDiv = document.getElementById("toast");
+        toastDiv.textContent = message;
+        toastDiv.className = "show";
         setTimeout(() => 
-                {toastiv.className = toastiv.className.replace("show", "");
+                {toastDiv.className = toastDiv.className.replace("show", "");
                 }, 3000);
 }
