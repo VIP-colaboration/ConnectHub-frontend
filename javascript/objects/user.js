@@ -1,10 +1,11 @@
 export class User {
-    constructor (id, name, password, firstLogin, friends, conversations, likes) {
+    constructor (id, name, password, firstLogin, friends, conversations, likes, privateMode) {
         this.id = id;
         this.name = name;
         this.firstLogin = firstLogin;
         this.friends = friends;
         this.conversations = conversations;
-        this.likes = likes;6
+        this.likes = likes;
+        this.privateMode = privateMode;
     }
 }

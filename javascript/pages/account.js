@@ -37,7 +37,7 @@ userPicture.addEventListener("mouseenter", () => {
     showToast("click to change your profile picture.");
 });
 
-userPicture.addEventListener("click", getFile)
+userPicture.addEventListener("click", handleFile)
 
 userEmail.addEventListener("mouseenter", () => {
     //test code
@@ -104,7 +104,8 @@ async function fetchUser() {
       false, 
       userResponse.friends, 
       userResponse.conversations, 
-      userResponse.likes
+      userResponse.likes,
+      userResponse.privateMode,
     );
 
     return user;
@@ -122,6 +123,7 @@ function displayUserinfo(user) {
     postCounter.textContent = 0; //TODO fix later
     commentCounter.textContent = 0; //TODO fix later
     likedCounter.textContent = ifListNullThenZero(user.likes);
+    visibilityMode.checked = user.privateMode;
 }
 
 function showFriends (/*inser user */) {
