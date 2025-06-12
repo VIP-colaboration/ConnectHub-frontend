@@ -52,10 +52,12 @@ visibilityMode.addEventListener("click", () => {
     //test code
     if (visibilityMode.checked) {
         console.log("invisible");
+
     }
     if (!visibilityMode.checked) {
         console.log("visible");
     }
+    privateModeSwitch();
 });
 
 
@@ -143,6 +145,28 @@ function showFriends (/*inser user */) {
 
     itemsToShow.innerHTML = "";
     itemsToShow.appendChild(friendsContainer);
+}
+
+async function privateModeSwitch() {
+  let message;
+  try {
+    let response = await fetch("http://localhost:8080/private-mode-switch", {
+      method : "PUT",
+      headers: {
+        "Authorization" : getToken()
+      }
+    });
+
+    if (!response.ok) {
+      message = await response.text();
+      throw new Error (message);
+    }
+    message = await response.text();
+    fetchUser();
+    showToast(message);
+  } catch(error) {
+    showToast(error.message);
+  }
 }
 
 function ifListNullThenZero(itemList) {
