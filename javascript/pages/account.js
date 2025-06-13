@@ -1,4 +1,4 @@
-import { setToken, removeToken, getToken } from "../objects/token.js";
+import { setToken, removeToken, getToken, saveProfilePicture, getProfilePicture, removeProfilePicture } from "../objects/token.js";
 import { showToast } from "../pages/main.js";
 import { User } from "../objects/user.js";
 
@@ -70,8 +70,6 @@ async function substantiateUser() {
     try {
         const user = await fetchUser()
 
-        console.log("after fetch" + JSON.stringify(user));
-
         displayUserinfo(user);
         showFriends();
 
@@ -132,9 +130,53 @@ function displayUserinfo(user) {
     visibilityMode.checked = user.privateMode;
 }
 
-function checkIfProfilePicutre() {
-  //TODO: code to check if profile picture registered and change accordingly
-  userPicture.style.backgroundImage = 'url("../pictures/std-profile-picture.png")';
+async function checkIfProfilePicutre() {
+  const localStorageImg = getProfilePicture();
+  if (localStorageImg) {
+    console.log("found picture in local storage");
+    
+    const profileImage = getProfilePicture();
+    userPicture.style.backgroundImage = `url('${profileImage}')`;
+    return;
+  }
+
+  console.log("did not find picture in local storage");
+
+  try {
+    const response = await fetch("http://localhost:8080/get-profile-picture", {
+      method: "GET",
+      headers:{
+        "Authorization": getToken(),
+      }
+    })
+
+    if (!response.ok) {
+      const message = await response.text();
+      throw new Error(message);
+    }
+    
+    const binaryImage = await response.blob();
+
+
+    //this sets everything for when the image is ready
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      const profileImage = fileReader.result;
+
+      saveProfilePicture(profileImage);
+
+      userPicture.style.backgroundImage = `url('${profileImage}')`;
+    };
+
+    //this implements the 'onloadend' above
+    fileReader.readAsDataURL(binaryImage);
+
+  } catch(error) {
+    showToast(error.message);
+    console.log(error.message);
+    userPicture.style.backgroundImage = 'url("../pictures/std-profile-picture.png")';
+  }
+  
 }
 
 function showFriends (/*inser user */) {
