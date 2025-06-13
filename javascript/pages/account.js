@@ -13,6 +13,7 @@ const placeholderFriends = [
 
 //FOR USER INFO
 const userPicture = document.getElementById("userPicture");
+const userProfilePictureInput = document.getElementById("userProfilePictureInput");
 const userName = document.getElementById("username");
 const userEmail = document.getElementById("userEmail");
 const visibilityMode = document.getElementById("visibilityMode");
@@ -37,7 +38,9 @@ userPicture.addEventListener("mouseenter", () => {
     showToast("click to change your profile picture.");
 });
 
-userPicture.addEventListener("click", handleFile)
+userProfilePictureInput.addEventListener("change", (e) => {
+  handleFile(e);
+})
 
 userEmail.addEventListener("mouseenter", () => {
     //test code
@@ -118,6 +121,7 @@ async function fetchUser() {
 }
 
 function displayUserinfo(user) {
+    checkIfProfilePicutre();
     userName.textContent = user.name;
     userEmail.textContent = "undefined";
     friendCounter.textContent = ifListNullThenZero(user.friends);
@@ -126,6 +130,11 @@ function displayUserinfo(user) {
     commentCounter.textContent = 0; //TODO fix later
     likedCounter.textContent = ifListNullThenZero(user.likes);
     visibilityMode.checked = user.privateMode;
+}
+
+function checkIfProfilePicutre() {
+  //TODO: code to check if profile picture registered and change accordingly
+  userPicture.style.backgroundImage = 'url("../pictures/std-profile-picture.png")';
 }
 
 function showFriends (/*inser user */) {
@@ -170,15 +179,66 @@ async function privateModeSwitch() {
 }
 
 function ifListNullThenZero(itemList) {
-    if (itemList === null || itemList === undefined) {
-        return 0;
-    }
-    return itemList.length;
+  if (itemList === null || itemList === undefined) {
+      return 0;
+  }
+  return itemList.length;
 }
 
 function handleFile(event) {
-    console.log("handle file");
-    // Handle the selected file(s) here
-    const selectedFiles = event.target.files;
-    console.log(selectedFiles);
+  console.log("handle profile picture");
+
+  const profilePicture = event.target.files[0];
+
+  if (!profilePicture) {
+    console.log("fail handleFile");
+    
+    return;
+  }
+
+  const fileReader = new FileReader();
+
+  fileReader.onload = function(e) {
+    console.log("handleFile: fileReader function");
+    
+    const pictureURL = e.target.result;
+
+    localStorage.setItem("profilePicture", pictureURL);
+
+    userPicture.style.backgroundImage = `url('${pictureURL}')`;
+  }
+
+  fileReader.readAsDataURL(profilePicture);
+
+  uploadProfilePicture(profilePicture);
 }
+
+async function uploadProfilePicture(image) {
+  console.log("uploadProfilePicture");
+  
+  const formData = new FormData();
+  formData.append("file", image);
+
+  try {
+    const response = await fetch("http://localhost:8080/upload-profile-picture", {
+      method: "POST",
+      headers: {
+        "Authorization" : getToken(),
+      },
+      body: formData,
+    });
+
+    if (!response.ok) {
+      const message = await response.text();
+      throw new Error(message);
+    }
+
+    showToast("Profile picture uploaded.");
+
+    //TODO update picture?
+
+  } catch(error) {
+    showToast(error.message);
+  }
+}
+
