@@ -39,7 +39,7 @@ userPicture.addEventListener("mouseenter", () => {
 });
 
 userProfilePictureInput.addEventListener("change", (e) => {
-  handleFile(e);
+  handleUserPicture(e);
 })
 
 userEmail.addEventListener("mouseenter", () => {
@@ -65,7 +65,9 @@ visibilityMode.addEventListener("click", () => {
 
 
 
-
+/**
+ * calls on functions to displays user info on the page
+ */
 async function substantiateUser() {
     try {
         const user = await fetchUser()
@@ -81,7 +83,10 @@ async function substantiateUser() {
 substantiateUser();
 
 
-
+/**
+ * fecthes userDTO from database and creates new User
+ * @returns User
+ */
 async function fetchUser() {
   let message;
   try {
@@ -118,6 +123,9 @@ async function fetchUser() {
   }
 }
 
+/**
+ * @param {*} user uses its info to display user information
+ */
 function displayUserinfo(user) {
     checkIfProfilePicutre();
     userName.textContent = user.name;
@@ -130,6 +138,11 @@ function displayUserinfo(user) {
     visibilityMode.checked = user.privateMode;
 }
 
+/**
+ * check if user image is in localStorage,if not calls API to fetch the image.
+ * If no image exists (locally or on server side) the default user-silhouette is display
+ * @returns 
+ */
 async function checkIfProfilePicutre() {
   const localStorageImg = getProfilePicture();
   if (localStorageImg) {
@@ -179,6 +192,9 @@ async function checkIfProfilePicutre() {
   
 }
 
+/**
+ * will display friend information (filler code now)
+ */
 function showFriends (/*inser user */) {
     for (let friend of placeholderFriends) {
         const singleFriend = document.createElement("div");
@@ -198,6 +214,9 @@ function showFriends (/*inser user */) {
     itemsToShow.appendChild(friendsContainer);
 }
 
+/**
+ * calls server to toggle between private and public mode (toggle switch)
+ */
 async function privateModeSwitch() {
   let message;
   try {
@@ -220,6 +239,11 @@ async function privateModeSwitch() {
   }
 }
 
+/**
+ * to avoid undefined, list can be run here.
+ * @param {*} itemList 
+ * @returns either 0 (zero) or the length of the list
+ */
 function ifListNullThenZero(itemList) {
   if (itemList === null || itemList === undefined) {
       return 0;
@@ -227,7 +251,14 @@ function ifListNullThenZero(itemList) {
   return itemList.length;
 }
 
-function handleFile(event) {
+/**
+ * user profile picture is actually an input with CSS-modified background and shape.
+ * when submitting the image file the function check if there is an image (otherwise return)
+ * Th piture is saved in localStorage and sent to uploadProfilePicture for server handling
+ * @param {*} event 
+ * @returns nothing
+ */
+function handleUserPicture(event) {
   console.log("handle profile picture");
 
   const profilePicture = event.target.files[0];
@@ -255,6 +286,10 @@ function handleFile(event) {
   uploadProfilePicture(profilePicture);
 }
 
+/**
+ * sends picture to API to be saved
+ * @param {*} image 
+ */
 async function uploadProfilePicture(image) {
   console.log("uploadProfilePicture");
   
