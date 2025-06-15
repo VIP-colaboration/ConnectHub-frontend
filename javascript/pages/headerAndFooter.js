@@ -1,3 +1,4 @@
+import { getToken, removeToken } from "../objects/token.js";
 
 headerMaker();
 footerMaker();
@@ -14,7 +15,8 @@ function headerMaker () {
     const messages = document.createElement("li");
     const account = document.createElement("li");
     const dots = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-
+    const logoutButton = document.createElement("button");
+  
     logo.src = "../logos/connecthubtext.png"
     linkHome.href = "index.html";
     bulletinBoard.innerHTML = '<a href="board.html">Board</a>';
@@ -121,15 +123,21 @@ function headerMaker () {
                 clip-rule="evenodd"
                 />
             </svg>
-            `;
+      `;
 
+    logoutButton.textContent = "Logout";
+    
 
+    logoutButton.addEventListener("click", logout);
+
+    logoutButton.classList = "secondaryBtn";
     navBar.className = "hidden";
     dots.classList = "dots";
     hamburger.id = "hamburgerMenu";
+    logoutButton.style = "height: 2rem; padding:0; font-size: large";
 
     linkHome.append(logo);
-    navBar.append(bulletinBoard, friends, messages, account)
+    navBar.append(bulletinBoard, friends, messages, account, logoutButton);
     navDiv.append(hamburger, navBar)
     header.append(linkHome, dots, navDiv);
     document.body.prepend(header);
@@ -228,4 +236,9 @@ function addSearchInput () {
   searchInput.id = "searchInput";
   inputDiv.append(magnifyingSvg, searchInput);
   return inputDiv;
+}
+
+function logout () {
+  removeToken;
+  window.location.href = "index.html";
 }
