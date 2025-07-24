@@ -60,6 +60,11 @@ header ul {
     z-index: 100;
 }
 
+header li {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 .input-div {
     position: absolute;
     left: 30%;

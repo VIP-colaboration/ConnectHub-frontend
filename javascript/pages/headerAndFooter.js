@@ -134,7 +134,7 @@ function headerMaker () {
     navBar.className = "hidden";
     dots.classList = "dots";
     hamburger.id = "hamburgerMenu";
-    logoutButton.style = "height: 2rem; padding:0; font-size: large";
+    logoutButton.style = "height: 3rem; padding:0; font-size: large";
 
     linkHome.append(logo);
     navBar.append(bulletinBoard, friends, messages, account, logoutButton);
