@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/buttons.css">
     <script type="module" src="../javascript/pages/main.js"></script>
     <script type="module" src="../javascript/pages/friends.js"></script>
+    <script type="module" src="../javascript/objects/friendRequest.js"></script>
     <script type="module" src="../javascript/objects/token.js"></script>
 </head>
 <body>
@@ -35,12 +36,13 @@
             <div class="friendFunctions">
                 <label for="friendRequestField">Send a friend request to a <b>private</b> or <b>public</b> user:</label>
                 <input type="text" id="friendRequestField" class="inputField">
-                <button class="primaryBtn" id="searchByUsernameBtn">Send friend request</button>
+                <button class="primaryBtn" id="searchByUserIDBtn">Send friend request</button>
             </div>
         </section>
         <section id="flexibleSection">
             <!-- show results from public search-->
         </section>
     </main>
+    <div id="toast"></div>
 </body>
 </html>
