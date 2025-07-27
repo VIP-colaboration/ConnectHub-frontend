@@ -1,4 +1,5 @@
 main{
+    color: #2274A5;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,7 +18,6 @@ section{
     align-items: center;
     font-size: 2rem;
     list-style-type: none;
-    color: #2274A5;
     display: flex;
     flex-direction: row;
     gap: 2rem;
@@ -42,4 +42,19 @@ section{
 #userID {
     font-style: italic;
     color: rgba(34, 116, 165, 0.9);
+}
+
+.friendFunctions{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem
+}
+
+.inputField{
+    height: 2rem;
+    width: 17rem;
+    border-radius: 1rem;
 }

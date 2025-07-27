@@ -17,6 +17,7 @@
 </head>
 <body>
     <main>
+        <!--TODO ADD NAVBAR for friend section-->
         <section>
             <!-- shows profile image, name and ID (to allow search by other users)-->
              <ul id="userDetails">
@@ -25,11 +26,19 @@
                 <li>Your user-ID: <span id="userID">placeholder</span></li>
              </ul>
         </section>
-        <section id="searchFirend">
-            <!-- search bar by name (if user is public)-->
-            <!-- search bar by id (for private user), will only give return if user exist (ie. "This account number was not found" or "request sent to user")-->
+        <section id="searchFriend">
+            <div class="friendFunctions">
+                <label for="searchByUsernameField">Search <b>public</b> users by their username:</label>
+                <input type="text" id="searchByUsernameField" class="inputField">
+                <button class="primaryBtn" id="searchByUsernameBtn">Look for user</button>
+            </div>
+            <div class="friendFunctions">
+                <label for="friendRequestField">Send a friend request to a <b>private</b> or <b>public</b> user:</label>
+                <input type="text" id="friendRequestField" class="inputField">
+                <button class="primaryBtn" id="searchByUsernameBtn">Send friend request</button>
+            </div>
         </section>
-        <section id="userResult">
+        <section id="flexibleSection">
             <!-- show results from public search-->
         </section>
     </main>
