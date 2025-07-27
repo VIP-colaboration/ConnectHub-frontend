@@ -1,0 +1,45 @@
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 85%;
+    border-bottom: 1px solid #2274A5;
+}
+
+#userDetails {
+    align-items: center;
+    font-size: 2rem;
+    list-style-type: none;
+    color: #2274A5;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    max-height: 5rem;
+}
+
+#userDetails li{
+    margin-bottom: 1rem;
+}
+
+#userDetails img{
+    font-size: 1rem;
+    font-style: italic;
+    text-wrap-mode: wrap;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    border: 3px solid #F1C40F;
+    object-fit: cover;
+}
+
+#userID {
+    font-style: italic;
+    color: rgba(34, 116, 165, 0.9);
+}

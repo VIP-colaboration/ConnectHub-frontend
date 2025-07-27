@@ -21,3 +21,27 @@ export function getProfilePicture() {
 export function removeProfilePicture() {
     localStorage.removeItem("profilePicture");
 }
+
+export function setUsername(username) {
+    localStorage.setItem("username", username);
+}
+
+export function getUsername() {
+    return localStorage.getItem("username");
+}
+
+export function removeUsername() {
+    localStorage.getItem("username");
+}
+
+export function setUserID(userID) {
+    localStorage.setItem("userID", userID);
+}
+
+export function getUserID() {
+    return localStorage.getItem("userID");
+}
+
+export function removeUserID() {
+    localStorage.getItem("userID");
+}

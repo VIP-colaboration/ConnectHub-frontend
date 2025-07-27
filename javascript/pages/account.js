@@ -1,8 +1,8 @@
-import { setToken, removeToken, getToken, saveProfilePicture, getProfilePicture, removeProfilePicture } from "../objects/token.js";
+import { setToken, removeToken, getToken, saveProfilePicture, getProfilePicture, removeProfilePicture, setUsername, setUserID } from "../objects/token.js";
 import { showToast } from "../pages/main.js";
 import { User } from "../objects/user.js";
 
-//test data to be removed
+//PLACEHOLDER data to be removed
 const placeholderFriends = [
   { name: "Jen", avatar: "https://xsgames.co/randomusers/avatar.php?g=female" },
   { name: "Super Cat", avatar: "https://xsgames.co/randomusers/avatar.php?g=male" },
@@ -71,6 +71,9 @@ visibilityMode.addEventListener("click", () => {
 async function substantiateUser() {
     try {
         const user = await fetchUser()
+
+        setUsername(user.name);
+        setUserID(user.id);
 
         displayUserinfo(user);
         showFriends();

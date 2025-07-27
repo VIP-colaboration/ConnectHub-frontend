@@ -9,22 +9,29 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/account.css">
+    <link rel="stylesheet" href="../css/friends.css">
     <link rel="stylesheet" href="../css/buttons.css">
     <script type="module" src="../javascript/pages/main.js"></script>
-    <script type="module" src="../javascript/pages/account.js"></script>
+    <script type="module" src="../javascript/pages/friends.js"></script>
     <script type="module" src="../javascript/objects/token.js"></script>
 </head>
 <body>
-    <section id="userDetail">
-        <!-- shows profile image, name and ID (to allow search by other users)-->
-    </section>
-    <section id="searchFirend">
-        <!-- search bar by name (if user is public)-->
-         <!-- search bar by id (for private user), will only give return if user exist (ie. "This account number was not found" or "request sent to user")-->
-    </section>
-    <section id="userResult">
-        <!-- show results from public search-->
-    </section>
+    <main>
+        <section>
+            <!-- shows profile image, name and ID (to allow search by other users)-->
+             <ul id="userDetails">
+                <li><img src="" alt="Profile image" id="userImage"></li>
+                <li id="username">User Name</li>
+                <li>Your user-ID: <span id="userID">placeholder</span></li>
+             </ul>
+        </section>
+        <section id="searchFirend">
+            <!-- search bar by name (if user is public)-->
+            <!-- search bar by id (for private user), will only give return if user exist (ie. "This account number was not found" or "request sent to user")-->
+        </section>
+        <section id="userResult">
+            <!-- show results from public search-->
+        </section>
+    </main>
 </body>
 </html>
