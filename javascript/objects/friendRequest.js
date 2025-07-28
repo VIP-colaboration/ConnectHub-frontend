@@ -21,14 +21,18 @@ export class FriendRequest {
         const acceptBtn = document.createElement("button");
         const declineBtn = document.createElement("button");
 
+        requestDiv.className = "friendRequestCard";
         acceptBtn.className = "primaryBtn";
         declineBtn.className = "secondaryBtn";
+
+        acceptBtn.setAttribute("id", this.id);
+        declineBtn.setAttribute("id", this.id);
 
         acceptBtn.textContent = "Accept";
         declineBtn.textContent = "Decline";
 
         requesterUsername.textContent = this.requesterUsername;
-        status.textContent = this.status;
+        status.textContent = "STATUS: " + this.status;
         message.textContent = this.message;
         created.textContent = this.created;
         updated.textContent = this.updated;

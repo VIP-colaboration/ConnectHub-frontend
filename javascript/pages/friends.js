@@ -57,6 +57,8 @@ async function checkForFriendRequest() {
             currentFriendRequests.textContent = "No friend request received";
             flexibleSection.append(currentFriendRequests);
         } else {
+            const friendRequestTitle = document.createElement("h1");
+            flexibleSection.append(friendRequestTitle);
             //TODO: SETUP DISPLAY OF FRIEND REQUESTS
             for (let friendRequ of friendRequestList){
                 const friendRequest = new FriendRequest (
@@ -70,9 +72,9 @@ async function checkForFriendRequest() {
                     friendRequ.created,
                     friendRequ.updated,
                 )
-                const friendRequestTitle = document.createElement("h1");
+                
                 friendRequestTitle.textContent = "Friend Requests";
-                flexibleSection.append(friendRequestTitle, friendRequest.requestElementsForRequested());
+                flexibleSection.append(friendRequest.requestElementsForRequested());
             }
         }
         

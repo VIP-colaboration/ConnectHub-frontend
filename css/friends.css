@@ -10,7 +10,7 @@ section{
     flex-direction: column;
     align-items: center;
     align-content: center;
-    width: 85%;
+    width: 95%;
     border-bottom: 1px solid #2274A5;
 }
 
@@ -19,21 +19,21 @@ section{
     font-size: 2rem;
     list-style-type: none;
     display: flex;
-    flex-direction: row;
-    gap: 2rem;
-    max-height: 5rem;
+    flex-direction: column;
+    align-items: center;
 }
 
 #userDetails li{
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 #userDetails img{
     font-size: 1rem;
     font-style: italic;
     text-wrap-mode: wrap;
-    height: 5rem;
-    width: 5rem;
+    height: 7rem;
+    width: 7rem;
     border-radius: 50%;
     border: 3px solid #F1C40F;
     object-fit: cover;
@@ -49,12 +49,87 @@ section{
     margin-bottom: 1rem;
     font-size: 2rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1rem
+    gap: 1rem;
+    text-align: center;
 }
 
 .inputField{
     height: 2rem;
     width: 17rem;
     border-radius: 1rem;
+}
+
+.friendRequestCard {
+    width: 80%;
+    margin: 0.5rem;
+    border: 3px solid #F1C40F;
+    border-radius: 2rem;
+    background-color: #2274A5;
+    color: #F1C40F;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.friendRequestCard h2{
+    align-self: center;
+}
+
+.friendRequestCard button{
+    margin: 0.25rem;
+}
+
+/*--------------------------SCREEN RESOLUTION--------------------------------------------------*/
+@media only screen and (min-width: 1024px) {
+    #flexibleSection {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 90%;
+    }
+
+    #flexibleSection > h1 {
+        width: 100%;
+        text-align: center;
+    }
+    .friendRequestCard{
+        width: 44%;
+    }
+}
+@media only screen and (min-width: 1300px) {
+    section{
+        width: 95%;
+    }
+
+    #flexibleSection{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-flow: row;
+    }
+
+    #flexibleSection h1 {
+        grid-column-start: 1;
+        grid-column-end: 4;
+    }
+
+    .friendRequestCard{
+        width: 80%;
+    }
+}
+@media only screen and (min-width: 1920px) {
+    #flexibleSection{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    #flexibleSection h1 {
+        grid-column-start: 1;
+        grid-column-end: 5;
+    }
+
+    .friendRequestCard{
+        width: auto;
+    }
 }
