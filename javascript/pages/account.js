@@ -31,7 +31,11 @@ const likedCounter = document.getElementById("likeCounter");
 //ITEMS TO SHOW
 const itemsToShow = document.getElementById("itemsToShow");
 const friendsContainer = document.createElement("section");
+const friendsContainerTitle = document.createElement("h1");
+
 friendsContainer.classList = "friends-container";
+friendsContainerTitle.classList = "sectionTitle";
+friendsContainerTitle.textContent = "Friends";
 
 userPicture.addEventListener("mouseenter", () => {
     //test code
@@ -76,7 +80,7 @@ async function substantiateUser() {
         setUserID(user.id);
 
         displayUserinfo(user);
-        showFriends();
+        showFriends(user);
 
     } catch(error) {
         console.error(error.message);
@@ -198,17 +202,18 @@ async function checkIfProfilePicutre() {
 /**
  * will display friend information (filler code now)
  */
-function showFriends (/*inser user */) {
-    for (let friend of placeholderFriends) {
+function showFriends (user) {
+    friendsContainer.appendChild(friendsContainerTitle)
+    for (let friend of user.friends) {
         const singleFriend = document.createElement("div");
         const friendAvatar = document.createElement("img");
         const friendName = document.createElement("h2");
 
-        singleFriend.classList = "user-logo-and-name";
+        singleFriend.classList = "friendCard";
         singleFriend.append(friendAvatar, friendName);
 
-        friendAvatar.src = friend.avatar;
-        friendName.textContent = friend.name;
+        fetchFriendPicture(friendAvatar, friend.id);
+        friendName.textContent = friend.username;
 
         friendsContainer.appendChild(singleFriend);
     }
@@ -319,6 +324,37 @@ async function uploadProfilePicture(image) {
 
   } catch(error) {
     showToast(error.message);
+  }
+}
+
+async function fetchFriendPicture (friendAvatar, friendID) {
+  let message;
+  try {
+    const response = await fetch(`http://localhost:8080/fetch-friend-profile-picture/${friendID}`, {
+      method: "GET",
+      headers:{
+        "Authorization": getToken(),
+      }
+    })
+
+    if (!response.ok) {
+      const message = await response.text();
+      throw new Error(message);
+    }
+    
+    const binaryImage = await response.blob();
+
+      const imageUrl = URL.createObjectURL(binaryImage);
+      friendAvatar.src = imageUrl;
+
+      friendAvatar.onload = () => URL.revokeObjectURL(imageUrl);
+
+    
+
+  } catch(error) {
+    showToast(error.message);
+    console.log(error.message);
+     friendAvatar.src = '../pictures/std-profile-picture.png';
   }
 }
 
