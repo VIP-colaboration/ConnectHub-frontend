@@ -49,6 +49,7 @@ export class FriendRequest {
         }
 
         acceptBtn.addEventListener("click", ()=> acceptfriendRequest(requestDiv, acceptBtn.id));
+        declineBtn.addEventListener("click", ()=> declineFriendRequest(requestDiv, declineBtn.id));
 
         responseDiv.append(created,status, acceptBtn, declineBtn);
         requestDiv.append(requesterUsername, message, responseDiv);
@@ -76,6 +77,32 @@ async function acceptfriendRequest(requestDiv, requestID) {
         message = await response.text();
         showToast(message);
         requestDiv.parentNode.removeChild(requestDiv);
+
+    } catch (error) {
+
+    }
+}
+
+async function declineFriendRequest(requestDiv, requestID) {
+    let message;
+
+    try {
+        const response = await fetch(`http://localhost:8080/decline-friend-request/${requestID}`, {
+            method: "POST",
+            headers: {
+                "Authorization": getToken(),
+            },
+        });
+
+        message = await response.text();
+
+        if (!response.ok) {
+            throw new Error(message);
+        }
+
+        showToast(message);
+        requestDiv.parentNode.removeChild(requestDiv);
+
 
     } catch (error) {
 
