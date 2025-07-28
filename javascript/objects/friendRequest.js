@@ -16,15 +16,17 @@ export class FriendRequest {
 
     requestElementsForRequested() {
         const requestDiv = document.createElement("div");
+        const responseDiv = document.createElement("div");
         const requesterUsername = document.createElement("h2");
         const status = document.createElement("p");
-        const message = document.createElement("p");
+        let message = document.createElement("p");
         const created = document.createElement("i");
         const updated = document.createElement("i");
         const acceptBtn = document.createElement("button");
         const declineBtn = document.createElement("button");
 
         requestDiv.className = "friendRequestCard";
+        responseDiv.className = "responseDiv";
         acceptBtn.className = "primaryBtn";
         declineBtn.className = "secondaryBtn";
         status.className = "status";
@@ -37,13 +39,19 @@ export class FriendRequest {
 
         requesterUsername.textContent = this.requesterUsername;
         status.textContent = "STATUS: " + this.status;
-        message.textContent = this.message;
+        message.textContent = checkMessages(this.message);
         created.textContent = this.created;
         updated.textContent = this.updated;
 
+        if (!this.message) {
+            message.style.fontStyle = "italic";
+            message.style.textAlign = "center"
+        }
+
         acceptBtn.addEventListener("click", ()=> acceptfriendRequest(requestDiv, acceptBtn.id));
 
-        requestDiv.append(requesterUsername, message, created,status, acceptBtn, declineBtn);
+        responseDiv.append(created,status, acceptBtn, declineBtn);
+        requestDiv.append(requesterUsername, message, responseDiv);
 
         return requestDiv;
     }
@@ -72,4 +80,12 @@ async function acceptfriendRequest(requestDiv, requestID) {
     } catch (error) {
 
     }
+}
+
+function checkMessages(message) {
+    if (!message) {
+        return "No message included in request."
+    }
+
+    return message;
 }

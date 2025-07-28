@@ -14,6 +14,10 @@ section{
     border-bottom: 1px solid #2274A5;
 }
 
+#flexibleSection {
+    height: fit-content;
+}
+
 #userDetails {
     align-items: center;
     font-size: 2rem;
@@ -79,7 +83,7 @@ section{
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    
+
 }
 
 .friendRequestCard h2 {
@@ -92,6 +96,13 @@ section{
 
 .friendRequestCard p{
     font-size: 1.25rem;
+    flex: 1;
+}
+
+.friendRequestCard .responseDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .status {
@@ -107,20 +118,27 @@ section{
 /*--------------------------SCREEN RESOLUTION--------------------------------------------------*/
 @media only screen and (min-width: 1024px) {
     #flexibleSection {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-flow: row;
+        gap: 3rem;
         width: 90%;
+        height: fit-content;
+        padding: 3rem;
     }
 
     #flexibleSection > h1 {
-        width: 100%;
         text-align: center;
+        grid-column-start: 1;
+        grid-column-end: 3;
     }
-    .friendRequestCard{
-        width: 44%;
+
+    .friendRequestCard {
+        height: 100%;
     }
 }
+
+
 @media only screen and (min-width: 1300px) {
     #userDetails {
         flex-direction: row;
@@ -137,6 +155,7 @@ section{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-auto-flow: row;
+        gap: 3rem;
     }
 
     #flexibleSection h1 {
@@ -146,6 +165,7 @@ section{
 
     .friendRequestCard{
         width: 80%;
+        height: 100%;
     }
 }
 @media only screen and (min-width: 1920px) {
