@@ -114,8 +114,13 @@ section{
     }
 }
 @media only screen and (min-width: 1300px) {
-    section{
-        width: 95%;
+    #userDetails {
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    .friendFunctions{
+    flex-direction: row;
     }
 
     #flexibleSection{
