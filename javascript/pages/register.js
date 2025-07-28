@@ -14,6 +14,11 @@ async function register() {
         return;
     }
 
+    if (!emailInput.value) {
+        showToast("You haven't filled the email. This is a mandatory field.");
+        return;
+    }
+
     if (!passwordField.value || !confirmPasswordField.value) {
         showToast("You haven't filled one or two of the password fields. Please fill all password fields as they are mandatory fields.");
         return;
@@ -24,8 +29,9 @@ async function register() {
         return;
     }
 
-    const username = usernameField.value
-    const password = passwordField.value
+    const username = usernameField.value;
+    const email = emailInput.value;
+    const password = passwordField.value;
     let message;
     let successful = false;
     try {
@@ -34,6 +40,7 @@ async function register() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 "username" : username,
+                "email" : email,
                 "password" : password,
             })
         });
