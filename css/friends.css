@@ -14,6 +14,18 @@ section{
     border-bottom: 1px solid #2274A5;
 }
 
+.friendNav {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.friendNav button{
+    width: 22rem;
+}
+
 #flexibleSection {
     height: fit-content;
 }
@@ -138,6 +150,11 @@ section{
     }
 }
 
+@media only screen and (min-width: 1115px) {
+    .friendNav {
+        flex-direction: row;
+    }
+}
 
 @media only screen and (min-width: 1300px) {
     #userDetails {
