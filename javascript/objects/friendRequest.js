@@ -24,6 +24,7 @@ export class FriendRequest {
         requestDiv.className = "friendRequestCard";
         acceptBtn.className = "primaryBtn";
         declineBtn.className = "secondaryBtn";
+        status.className = "status";
 
         acceptBtn.setAttribute("id", this.id);
         declineBtn.setAttribute("id", this.id);

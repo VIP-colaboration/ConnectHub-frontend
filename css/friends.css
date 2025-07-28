@@ -74,12 +74,26 @@ section{
     
 }
 
-.friendRequestCard h2{
+.friendRequestCard h2 {
     align-self: center;
 }
 
-.friendRequestCard button{
+.friendRequestCard button { 
     margin: 0.25rem;
+}
+
+.friendRequestCard p{
+    font-size: 1.25rem;
+}
+
+.status {
+    background-color: #F1C40F;
+    color: #2274A5;
+    width: fit-content;
+    padding: 0.5rem;
+    border: 3px solid #F75C03;
+    border-radius: 1rem;
+    align-self: center;
 }
 
 /*--------------------------SCREEN RESOLUTION--------------------------------------------------*/
