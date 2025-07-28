@@ -55,10 +55,18 @@ section{
     text-align: center;
 }
 
+.friendFunctions button {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
 .inputField{
     height: 2rem;
     width: 17rem;
     border-radius: 1rem;
+    text-align: center;
+    font-style: italic;
+    font-size: 1.25rem;
 }
 
 .friendRequestCard {
@@ -117,10 +125,12 @@ section{
     #userDetails {
         flex-direction: row;
         gap: 2rem;
+        margin: 0;
     }
 
     .friendFunctions{
     flex-direction: row;
+    gap: 0.25rem;
     }
 
     #flexibleSection{
