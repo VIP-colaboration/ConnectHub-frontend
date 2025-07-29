@@ -179,6 +179,10 @@ input:checked + .slider:before {
   width: 90%;
 }
 
+.friendCard:hover {
+  cursor: pointer;
+}
+
 .friendCard > h2 {
     color: #F1C40F;
     background-color: #2274A5;

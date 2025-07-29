@@ -2,16 +2,7 @@ import { setToken, removeToken, getToken, saveProfilePicture, getProfilePicture,
 import { showToast } from "../pages/main.js";
 import { User } from "../objects/user.js";
 
-//PLACEHOLDER data to be removed
-const placeholderFriends = [
-  { name: "Jen", avatar: "https://xsgames.co/randomusers/avatar.php?g=female" },
-  { name: "Super Cat", avatar: "https://xsgames.co/randomusers/avatar.php?g=male" },
-  { name: "Marie Taylor Greene", avatar: "https://xsgames.co/randomusers/avatar.php?g=female" },
-  { name: "Bob", avatar: "https://xsgames.co/randomusers/avatar.php?g=male" },
-  { name: "Osama", avatar: "https://xsgames.co/randomusers/avatar.php?g=male" }
-];
-
-//FOR USER INFO
+//FOR USER INFO (always displayed)
 const userPicture = document.getElementById("userPicture");
 const userProfilePictureInput = document.getElementById("userProfilePictureInput");
 const userName = document.getElementById("username");
@@ -28,8 +19,9 @@ const commentCounter = document.getElementById("commentCounter");
 const likedCtrl = document.getElementById("likedCtrl");
 const likedCounter = document.getElementById("likeCounter");
 
-//ITEMS TO SHOW
+//ITEMS TO SHOW, a flexible section to display items according to navbar on top
 const itemsToShow = document.getElementById("itemsToShow");
+//FLEXIBLE ITEMS
 const friendsContainer = document.createElement("section");
 const friendsContainerTitle = document.createElement("h1");
 
@@ -37,8 +29,11 @@ friendsContainer.classList = "friends-container";
 friendsContainerTitle.classList = "sectionTitle";
 friendsContainerTitle.textContent = "Friends";
 
+//FUNCTIONS TO START UPON PAGE LOADING
+substantiateUser();
+
+
 userPicture.addEventListener("mouseenter", () => {
-    //test code
     showToast("click to change your profile picture.");
 });
 
@@ -47,7 +42,6 @@ userProfilePictureInput.addEventListener("change", (e) => {
 })
 
 userEmail.addEventListener("mouseenter", () => {
-    //test code
     showToast("click to change your email address");
 });
 
@@ -56,26 +50,17 @@ visibilityMode.addEventListener("mouseenter", () => {
 })
 
 visibilityMode.addEventListener("click", () => {
-    //test code
-    if (visibilityMode.checked) {
-        console.log("invisible");
-
-    }
-    if (!visibilityMode.checked) {
-        console.log("visible");
-    }
     privateModeSwitch();
 });
 
 
 
-/**
- * calls on functions to displays user info on the page
- */
+// calls on functions to displays user info on the page and save user name and id in localstorage for quicker access later on
 async function substantiateUser() {
     try {
         const user = await fetchUser()
 
+        
         setUsername(user.name);
         setUserID(user.id);
 
@@ -87,7 +72,7 @@ async function substantiateUser() {
     }
 }
 
-substantiateUser();
+
 
 
 /**
@@ -124,6 +109,7 @@ async function fetchUser() {
     );
 
     return user;
+    
   } catch (error) {
     console.error("Error in fetchUser:", error);
     throw error; // to be called in substantiateUser
@@ -210,6 +196,9 @@ function showFriends (user) {
         const friendName = document.createElement("h2");
 
         singleFriend.classList = "friendCard";
+
+        singleFriend.addEventListener("click", () => goToFriend(friend.id));
+
         singleFriend.append(friendAvatar, friendName);
 
         fetchFriendPicture(friendAvatar, friend.id);
@@ -328,7 +317,6 @@ async function uploadProfilePicture(image) {
 }
 
 async function fetchFriendPicture (friendAvatar, friendID) {
-  let message;
   try {
     const response = await fetch(`http://localhost:8080/fetch-friend-profile-picture/${friendID}`, {
       method: "GET",
@@ -337,7 +325,13 @@ async function fetchFriendPicture (friendAvatar, friendID) {
       }
     })
 
+    if (response.status === 404) {
+      friendAvatar.src = '../pictures/std-profile-picture.png';
+      return;
+    }
+
     if (!response.ok) {
+
       const message = await response.text();
       throw new Error(message);
     }
@@ -352,9 +346,11 @@ async function fetchFriendPicture (friendAvatar, friendID) {
     
 
   } catch(error) {
-    showToast(error.message);
-    console.log(error.message);
      friendAvatar.src = '../pictures/std-profile-picture.png';
   }
 }
 
+async function goToFriend(friendID) {
+  //TODO write function
+  showToast(friendID)
+}
