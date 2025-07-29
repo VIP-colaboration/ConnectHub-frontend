@@ -10,11 +10,16 @@ const userID =document.getElementById("userID");
 const flexibleSection = document.getElementById("flexibleSection");
 const friendRequestField = document.getElementById("friendRequestField");
 const requestButton = document.getElementById("searchByUserIDBtn");
+const messageField = document.getElementById("messageField");
+const showMessageInput = document.getElementById("showMessageInput");
 
 //FOR FLEXIBLE SECTION
 const currentFriendRequests = document.createElement("h2");
 
 requestButton.addEventListener("click", sendFriendRequest);
+showMessageInput.addEventListener("click", () => {
+    messageField.classList.toggle("hiddenField");
+})
 
 setUpUserDetail();
 checkForFriendRequest();
@@ -94,7 +99,8 @@ async function sendFriendRequest() {
     try {
         //building parametes to be sent
         const params = new URLSearchParams ({
-            requestedId : friendRequestField.value
+            requestedId : friendRequestField.value,
+            message : messageField.value
         });
         console.log(params);
         
