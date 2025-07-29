@@ -1,6 +1,6 @@
 import { getToken } from "../objects/token.js";
 
-const itemsToShow = document.getElementById("itemsToShow");
+const flexibleSection = document.getElementById("flexibleSection");
 const friendsContainer = document.createElement("section");
 const friendsContainerTitle = document.createElement("h1");
 
@@ -27,8 +27,8 @@ export function showFriends (user) {
         friendsContainer.appendChild(singleFriend);
     }
 
-    itemsToShow.innerHTML = "";
-    itemsToShow.appendChild(friendsContainer);
+    flexibleSection.innerHTML = "";
+    flexibleSection.appendChild(friendsContainer);
 }
 
 async function fetchFriendPicture (friendAvatar, friendID) {  

@@ -2,9 +2,12 @@ import { setToken, removeToken, getToken, saveProfilePicture, getProfilePicture,
 import { showToast } from "./main.js";
 import { User } from "../objects/user.js";
 import { FriendRequest } from "../objects/friendRequest.js";
+import { showFriends } from "./addOnShowFriends.js";
 
 //FIXED ELEMENTS (always diplayed/included)
+const incomingRequestBtn = document.getElementById("incomingRequestBtn");
 const outcomingRequestBtn = document.getElementById("outcomingRequestBtn");
+const friendBtn = document.getElementById("friendBtn");
 const userImage = document.getElementById("userImage");
 const username = document.getElementById("username");
 const userID =document.getElementById("userID");
@@ -21,7 +24,9 @@ const outGoingFriendRequestTitle = document.createElement("h1");
 friendRequestTitle.textContent = "Incoming Friend Request";
 outGoingFriendRequestTitle.textContent = "Outgoing Friend Request";
 
+incomingRequestBtn.addEventListener("click", checkForFriendRequest);
 outcomingRequestBtn.addEventListener("click", showOutgoingRequest);
+friendBtn.addEventListener("click", getUserAndShowFriends);
 
 requestButton.addEventListener("click", sendFriendRequest);
 showMessageInput.addEventListener("click", () => {
@@ -182,7 +187,38 @@ async function showOutgoingRequest() {
         
     } catch (error) {
         console.log(error.message)
-    }
+    }   
+}
 
-    
+async function getUserAndShowFriends() {
+    let message;
+    try {
+        const response = await fetch("http://localhost:8080/user-info", {
+            method: "GET",
+            headers: {
+                "Authorization" : getToken(),
+                "content-type": "application/json",
+            }
+        })
+
+        if(!response.ok) {
+            message = await response.text();
+            throw new Error(message);
+        }
+
+        const userResponse = await response.json();
+        const user = new User(
+        userResponse.id, 
+        userResponse.username, 
+        null, 
+        false, 
+        userResponse.friends, 
+        userResponse.conversations, 
+        userResponse.likes,
+        userResponse.privateMode,
+        );
+        showFriends(user);
+    } catch(error) {
+        showToast(error.message);
+    }
 }

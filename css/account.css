@@ -259,7 +259,7 @@ input:checked + .slider:before {
 }
 
 @media only screen and (min-width: 1920px) {
-  #itemsToShow {
+  #flexibleSection {
     max-width: 85%;
   }
 
