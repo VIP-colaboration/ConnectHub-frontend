@@ -41,8 +41,6 @@ async function fetchFriendPicture (friendAvatar, friendID) {
     })
 
     if (response.status === 404) {
-        console.log("404");
-        
       friendAvatar.src = '../pictures/std-profile-picture.png';
       return;
     }

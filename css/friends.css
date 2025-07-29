@@ -170,6 +170,11 @@ section{
     .friendRequestCard {
         height: 100%;
     }
+
+    .friends-container {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
 }
 
 @media only screen and (min-width: 1115px) {
@@ -207,6 +212,11 @@ section{
         height: 100%;
     }
 
+    .friends-container {
+        grid-column-start: 1;
+        grid-column-end: 4;
+    }
+
 }
 @media only screen and (min-width: 1920px) {
     #flexibleSection{
@@ -220,5 +230,10 @@ section{
 
     .friendRequestCard{
         width: auto;
+    }
+
+    .friends-container {
+        grid-column-start: 1;
+        grid-column-end: 5;
     }
 }
