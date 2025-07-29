@@ -4,6 +4,7 @@ import { User } from "../objects/user.js";
 import { FriendRequest } from "../objects/friendRequest.js";
 
 //FIXED ELEMENTS (always diplayed/included)
+const outcomingRequestBtn = document.getElementById("outcomingRequestBtn");
 const userImage = document.getElementById("userImage");
 const username = document.getElementById("username");
 const userID =document.getElementById("userID");
@@ -15,11 +16,17 @@ const showMessageInput = document.getElementById("showMessageInput");
 
 //FOR FLEXIBLE SECTION
 const currentFriendRequests = document.createElement("h2");
+const friendRequestTitle = document.createElement("h1");
+const outGoingFriendRequestTitle = document.createElement("h1");
+friendRequestTitle.textContent = "Incoming Friend Request";
+outGoingFriendRequestTitle.textContent = "Outgoing Friend Request";
+
+outcomingRequestBtn.addEventListener("click", showOutgoingRequest);
 
 requestButton.addEventListener("click", sendFriendRequest);
 showMessageInput.addEventListener("click", () => {
     messageField.classList.toggle("hiddenField");
-})
+});
 
 setUpUserDetail();
 checkForFriendRequest();
@@ -39,6 +46,8 @@ function setUpUserDetail() {
 }
 
 async function checkForFriendRequest() {
+    flexibleSection.innerHTML = "";
+
     let message;
     
     try {
@@ -62,7 +71,7 @@ async function checkForFriendRequest() {
             currentFriendRequests.textContent = "No friend request received";
             flexibleSection.append(currentFriendRequests);
         } else {
-            const friendRequestTitle = document.createElement("h1");
+
             flexibleSection.append(friendRequestTitle);
             //TODO: SETUP DISPLAY OF FRIEND REQUESTS
             for (let friendRequ of friendRequestList){
@@ -78,7 +87,6 @@ async function checkForFriendRequest() {
                     friendRequ.updated,
                 )
                 
-                friendRequestTitle.textContent = "Friend Requests";
                 flexibleSection.append(friendRequest.requestElementsForRequested());
             }
         }
@@ -124,4 +132,57 @@ async function sendFriendRequest() {
         showToast(error.message);
         console.error(message);
     }
+}
+
+async function showOutgoingRequest() {
+    flexibleSection.innerHTML = "";
+    
+    let message;
+    
+    try {
+        //fetch request
+        const response = await fetch(`http://localhost:8080/get-friend-requests-sent`, {
+            method: "GET",
+            headers: {
+                "Authorization": getToken(),
+                "Content-type" : "application/json",
+            },
+        });
+
+        if (!response.ok) {
+            message = await response.text();
+            throw new Error(message);
+        }
+
+        const friendRequestList = await response.json();
+        if (friendRequestList.length === 0) {
+            console.log("empty list");
+            currentFriendRequests.textContent = "No friend request sent.";
+            flexibleSection.append(currentFriendRequests);
+        } else {
+
+            flexibleSection.append(outGoingFriendRequestTitle);
+            //TODO: SETUP DISPLAY OF FRIEND REQUESTS
+            for (let friendRequ of friendRequestList){
+                const friendRequest = new FriendRequest (
+                    friendRequ.id,
+                    friendRequ.requesterID,
+                    friendRequ.requesterUsername,
+                    friendRequ.requestedID,
+                    friendRequ.requestedUsername,
+                    friendRequ.status,
+                    friendRequ.message,
+                    friendRequ.created,
+                    friendRequ.updated,
+                )
+                
+                flexibleSection.append(friendRequest.requestElementsForRequester());
+            }
+        }
+        
+    } catch (error) {
+        console.log(error.message)
+    }
+
+    
 }

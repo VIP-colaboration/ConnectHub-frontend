@@ -56,6 +56,37 @@ export class FriendRequest {
 
         return requestDiv;
     }
+
+    requestElementsForRequester() {
+        const requestDiv = document.createElement("div");
+        const responseDiv = document.createElement("div");
+        const requestedUsername = document.createElement("h2");
+        const status = document.createElement("p");
+        let message = document.createElement("p");
+        const created = document.createElement("i");
+        const updated = document.createElement("i");
+
+        requestDiv.className = "friendRequestCard";
+        responseDiv.className = "responseDiv";
+        status.className = "status";
+
+
+        requestedUsername.textContent = this.requestedUsername;
+        status.textContent = "STATUS: " + this.status;
+        message.textContent = checkMessages(this.message);
+        created.textContent = this.created;
+        updated.textContent = this.updated;
+
+        if (!this.message) {
+            message.style.fontStyle = "italic";
+            message.style.textAlign = "center"
+        }
+
+        responseDiv.append(created,status);
+        requestDiv.append(requestedUsername, message, responseDiv);
+
+        return requestDiv;
+    }
 }
 
 async function acceptfriendRequest(requestDiv, requestID) {
