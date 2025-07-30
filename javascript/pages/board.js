@@ -2,7 +2,8 @@ import { Post } from "../objects/post.js";
 
 const openPostFormBtn = document.getElementById("openPostFormBtn");
 const postForm = document.getElementById("postForm");
-const postText = document.getElementById("postText");
+const postTitleInput = document.getElementById("postTitleInput")
+const postTextInput = document.getElementById("postText");
 const postPictureInput = document.getElementById("postPictureBrowse");
 const postBtn = document.getElementById("postBtn");
 const cancelPostBtn = document.getElementById("cancelPostBtn");
@@ -18,10 +19,12 @@ postBtn.addEventListener("click", () => {
     if (!postPictureInput.value) {
         console.log("false");
     } else {
-        console.log("clock");
+        console.log(postPictureInput.value);
         
     }
-    })
+})
+
+cancelPostBtn.addEventListener("click", emptyAndClosePostForm);
 
 
 
@@ -56,6 +59,13 @@ function getPosts() {
     for (let post of posts) {
         postList.append(post.publishPostCard());
     }
+}
+
+function emptyAndClosePostForm() {
+    postTitleInput.value = "";
+    postTextInput.value = "";
+    postPictureInput.value = "";
+    postForm.classList.toggle("hiddenForm");
 }
 
 async function savePost() {
