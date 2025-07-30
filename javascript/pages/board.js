@@ -1,8 +1,29 @@
 import { Post } from "../objects/post.js";
 
+const openPostFormBtn = document.getElementById("openPostFormBtn");
+const postForm = document.getElementById("postForm");
+const postText = document.getElementById("postText");
+const postPictureInput = document.getElementById("postPictureBrowse");
+const postBtn = document.getElementById("postBtn");
+const cancelPostBtn = document.getElementById("cancelPostBtn");
 const postList = document.getElementById("posts");
 
 getPosts();
+
+openPostFormBtn.addEventListener("click", () => {
+    postForm.classList.toggle("hiddenForm");
+})
+
+postBtn.addEventListener("click", () => {
+    if (!postPictureInput.value) {
+        console.log("false");
+    } else {
+        console.log("clock");
+        
+    }
+    })
+
+
 
 const observer = new IntersectionObserver((postCards) =>  {
     postCards.forEach((postCard) => {
@@ -14,6 +35,8 @@ const observer = new IntersectionObserver((postCards) =>  {
 
 const hiddenPostCards = document.querySelectorAll(".hidden");
 hiddenPostCards.forEach((postCard) => observer.observe(postCard));
+
+
 
 function getPosts() {
     const posts = [
@@ -33,4 +56,12 @@ function getPosts() {
     for (let post of posts) {
         postList.append(post.publishPostCard());
     }
+}
+
+async function savePost() {
+
+}
+
+function createNewPost (){
+
 }

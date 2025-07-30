@@ -24,28 +24,36 @@ main {
     margin-top: 0.5rem;
 }
 
-.post-form textarea {
+.post-form input {
+    padding: 0.5rem;
+    border-radius: 1rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.post-form input::file-selector-button {
+    display: none;
+}
+
+.post-title-input {
+   text-align: center;
+    border-radius: 1rem;
+    padding: 0.25rem;
+    font-size: 1rem;
+    width: 90%;
+    font-size: 1.5rem;
+}
+
+.post-text-textarea {
+    text-align: center;
+    border-radius: 1rem;
+    padding: 0.25rem;
+    font-size: 1rem;
     border-radius: 1rem;
     height: 7rem;
     width: 90%;
     padding: 0.5rem;
     font-size: 1rem;
-}
-
-.post-form input{
-    text-align: center;
-    border-radius: 1rem;
-    padding: 0.25rem;
-    font-size: 1rem;
-    max-width: fit-content;
-}
-
-.post-form input::file-selector-button {
-  display: none;
-}
-
-.cursor {
-  cursor: pointer;
 }
 
 .hidden {

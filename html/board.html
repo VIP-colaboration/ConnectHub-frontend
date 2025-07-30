@@ -17,16 +17,17 @@
 <body>
     <main>
         <section class="posts-container"> <!-- for alignments of #posts purposes-->
-            <button class="primaryBtn">New Post +</button>
-            <form action="createPost" id="postForm" class="post-form hiddenForm">
-                <textarea name="postText" id="postText" placeholder="Write your thoughts down here!"></textarea>
+            <button class="primaryBtn" id="openPostFormBtn">New Post +</button>
+            <div id="postForm" class="post-form hiddenForm">
+                <input type="text" class="post-title-input" placeholder="Post Title">
+                <textarea name="postText" id="postText" class="post-text-textarea" placeholder="Write your thoughts down here!"></textarea>
                 <label for="postPictureBrowse">You can add a background to your post</label>
                 <input type="file" accept="image/*" id="postPictureBrowse" class="cursor primaryBtn" title="Choose file">
                 <div>
-                    <button class="primaryBtn">Post</button>
-                    <button class="secondaryBtn">Cancel</button>
+                    <button class="primaryBtn" id="postBtn">Post</button>
+                    <button class="secondaryBtn" id="cancelPostBtn">Cancel</button>
                 </div>
-            </form>
+            </div>
             <articles id="posts">
                 <!-- fills through javascripts-->
             </articles>
