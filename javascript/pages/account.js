@@ -221,8 +221,6 @@ function ifListNullThenZero(itemList) {
  * @returns nothing
  */
 function handleUserPicture(event) {
-  console.log("handle profile picture");
-
   const profilePicture = event.target.files[0];
 
   if (!profilePicture) {

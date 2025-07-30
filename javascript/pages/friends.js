@@ -115,9 +115,7 @@ async function sendFriendRequest() {
             requestedId : friendRequestField.value,
             message : messageField.value
         });
-        console.log(params);
         
-
         const response = await fetch(`http://localhost:8080/send-friend-request?${params}`, {
             method: "POST",
             headers: {

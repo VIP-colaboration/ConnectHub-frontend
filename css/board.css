@@ -56,14 +56,14 @@ main {
     font-size: 1rem;
 }
 
-.hidden {
+.hiddenPostCard {
     opacity: 0;
     filter: blur(5px);
     transform: translateX(-100%);
     transition: 1s;
 }
 
-.show {
+.showPostCard {
     opacity: 1;
     filter: blur(0);
     transform: translateX(0%);

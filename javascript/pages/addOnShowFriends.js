@@ -8,7 +8,9 @@ friendsContainer.classList = "friends-container";
 friendsContainerTitle.classList = "sectionTitle";
 friendsContainerTitle.textContent = "Friends";
 
+//displays the friends user, empties the friend container to avoid multiplication of data on the screen
 export function showFriends (user) {
+  friendsContainer.innerHTML = ""; //to avoid multiplication
     friendsContainer.appendChild(friendsContainerTitle)
     for (let friend of user.friends) {
         const singleFriend = document.createElement("div");
@@ -31,6 +33,7 @@ export function showFriends (user) {
     flexibleSection.appendChild(friendsContainer);
 }
 
+//gets the friend's picture based on the friend ID
 async function fetchFriendPicture (friendAvatar, friendID) {  
     try {
         const response = await fetch(`http://localhost:8080/fetch-friend-profile-picture/${friendID}`, {
@@ -62,7 +65,8 @@ async function fetchFriendPicture (friendAvatar, friendID) {
   }
 }
 
+//will allow to see friend's page
 async function goToFriend(friendID) {
   //TODO write function
-  showToast(friendID)
+  showToast(friendID);
 }

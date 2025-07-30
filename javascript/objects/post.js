@@ -1,12 +1,13 @@
 export class Post {
-    constructor (id, user, date, title, content, likes, comments) {
+    constructor (id, user, date, title, content, isPrivate, likes, comments) {
         this.id = id;
         this.user = user;
         this.date = date;
         this.title = title;
         this.content = content;
+        this.isPrivate = isPrivate;
         this.likes = likes;
-        this.comments = comments
+        this.comments = comments;
     }
 
     publishPostCard() {
@@ -25,7 +26,7 @@ export class Post {
         const likeCounter = document.createElement("p");
         const commentCounter = document.createElement("p");
 
-        postCard.classList = "post-card hidden";
+        postCard.classList = "post-card hiddenPostCard";
         postUserCard.classList = "post-user-card";
         postTitle.classList = "post-title";
         postContent.classList = "post-content";
