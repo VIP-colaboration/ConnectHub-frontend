@@ -1,3 +1,53 @@
+main {
+    padding-top: 4rem;
+}
+
+/* TODO uncomment after javascript done
+.hiddenForm {
+    display: none;
+}
+    */
+
+.post-form {
+    background-color: #2274A5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 90%;
+    color: #F1C40F;
+    text-align: center;
+    border: 2px solid #F1C40F;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.post-form textarea {
+    border-radius: 1rem;
+    height: 7rem;
+    width: 90%;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.post-form input{
+    text-align: center;
+    border-radius: 1rem;
+    padding: 0.25rem;
+    font-size: 1rem;
+    max-width: fit-content;
+}
+
+.post-form input::file-selector-button {
+  display: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
 .hidden {
     opacity: 0;
     filter: blur(5px);
@@ -145,7 +195,20 @@
 }
 
 /* ------------------------------------------- SCREEN RESOLUTIONS ----------------------------------------------*/
+@media only screen and (min-width: 680px) {
+    main {
+        padding-top: 0;
+        margin-top: 1rem;
+    }
+
+    
+}
+
 @media only screen and (min-width: 1024px) {
+    .post-form {
+        max-width: 48rem;
+    }
+    
     #posts {
         margin-top: 1rem;
         display: grid;
@@ -169,6 +232,10 @@
 }
 
 @media only screen and (min-width: 1300px) {
+    .post-form {
+        max-width: 74rem;
+    }
+    
     #posts {
         display: grid;
         grid-template-columns: 25rem 25rem 25rem;
@@ -185,6 +252,10 @@
 }
 
 @media only screen and (min-width: 1920px) {
+    .post-form {
+        max-width: 100rem;
+    }
+    
     #posts {
         grid-template-columns: 25rem 25rem 25rem 25rem;
         gap: 1rem;

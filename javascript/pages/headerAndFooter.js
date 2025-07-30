@@ -1,4 +1,4 @@
-import { getToken, removeToken } from "../objects/token.js";
+import { removeProfilePicture, removeToken, removeUserID, removeUsername } from "../objects/token.js";
 
 headerMaker();
 footerMaker();
@@ -239,6 +239,9 @@ function addSearchInput () {
 }
 
 function logout () {
-  removeToken;
+  removeToken();
+  removeProfilePicture();
+  removeUserID();
+  removeUsername();
   window.location.href = "index.html";
 }

@@ -10,12 +10,23 @@
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/board.css">
+    <link rel="stylesheet" href="../css/buttons.css">
     <script type="module" src="../javascript/objects/post.js"></script>
     <script type="module" src="../javascript/pages/board.js"></script>
 </head>
 <body>
     <main>
         <section class="posts-container"> <!-- for alignments of #posts purposes-->
+            <button class="primaryBtn">New Post +</button>
+            <form action="createPost" id="postForm" class="post-form hiddenForm">
+                <textarea name="postText" id="postText" placeholder="Write your thoughts down here!"></textarea>
+                <label for="postPictureBrowse">You can add a background to your post</label>
+                <input type="file" accept="image/*" id="postPictureBrowse" class="cursor primaryBtn" title="Choose file">
+                <div>
+                    <button class="primaryBtn">Post</button>
+                    <button class="secondaryBtn">Cancel</button>
+                </div>
+            </form>
             <articles id="posts">
                 <!-- fills through javascripts-->
             </articles>
