@@ -7,29 +7,10 @@ const urlParam = new URLSearchParams(window.location.search);
 const postId = urlParam.get("postId");
 const postContainer = document.getElementById("singlePost");
 
-console.log("Type of postId:", typeof postId);
-console.log("postId value:", postId);
-console.log("Is postId a Promise?", postId instanceof Promise);
-
 displaySinglePost(postId);
 
 
-function displaySinglePost(postId) {
-
-    console.log("In displaySinglePost - Type:", typeof postId);
-    console.log("In displaySinglePost - Value:", postId);
-    console.log("In displaySinglePost - Is Promise?", postId instanceof Promise);
-    console.log(postId);
-
-    
-    getSinglePost(postContainer, postId);
-
-    
-}
-
-async function getSinglePost(parentNode, postId) {
-    console.log(typeof(postId));
-
+async function displaySinglePost(postId) {
     try {
         const response = await fetch(`http://localhost:8080/get-post/${postId}`, {
             method: "GET",
@@ -56,9 +37,12 @@ async function getSinglePost(parentNode, postId) {
             data.comments
         );
 
+        console.log(JSON.stringify(post));
+        
+
         const postCard = post.publishPostCard();
 
-        parentNode.appendChild(postCard);
+        postContainer.appendChild(postCard);
     } catch (error) {
         console.error("getSinglePost: " + error.message);
     }
