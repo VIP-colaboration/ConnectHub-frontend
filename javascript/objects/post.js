@@ -1,7 +1,9 @@
+import { getToken } from "./token.js";
+
 export class Post {
-    constructor (id, user, date, title, content, isPrivate, likes, comments) {
+    constructor (id, userId, date, title, content, isPrivate, likes, comments) {
         this.id = id;
-        this.user = user;
+        this.userId = userId;
         this.date = date;
         this.title = title;
         this.content = content;
@@ -68,9 +70,15 @@ export class Post {
         commentSymbol.setAttribute("viewBox", "0 0 64 64");
 
         userImg.src = "../logos/connecthublogoINVERTEDFOCUSED.png"
-        usernamePosted.textContent = this.user + " posted"
-        postDate.textContent = this.date;
-
+        retrieveUserName(usernamePosted, this.userId);
+        const date = new Date(this.date);
+        postDate.textContent = date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
         postTitle.textContent = this.title;
         postContent.textContent = this.content;
 
@@ -78,5 +86,30 @@ export class Post {
         commentCounter.textContent = this.comments.length;
 
         return postCard;
+    }
+}
+
+async function retrieveUserName(usernamePosted, userID) {
+    try {
+        const response = await  fetch(`http://localhost:8080/get-user/${userID}`, {
+            method: "GET",
+            headers: {
+                "Authorization" : getToken(),
+                "Content-type" : "Application/json"
+            },
+        });
+
+        if (!response.ok) {
+            const message = await response.text();
+            throw new Error(message);
+        }
+
+        const userResponse = await response.json();
+        console.log(userResponse.username);
+        
+        usernamePosted.textContent = userResponse.username + " posted"
+    } catch (error) {
+        console.error(error.message);
+        usernamePosted.textContent = "Error fetching name";
     }
 }
