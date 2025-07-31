@@ -2,11 +2,9 @@ main {
     padding-top: 4rem;
 }
 
-/* TODO uncomment after javascript done
 .hiddenForm {
     display: none;
 }
-    */
 
 .post-form {
     background-color: #2274A5;
@@ -97,9 +95,10 @@ main {
     height: 25rem;
     border: 2px solid #F1C40F;
     border-radius: 1rem;
-    background-image: url("https://picsum.photos/200/300");
+    background-image: none;
     background-size:cover;
     background-position: center;
+    background-color: #2274A5;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -1,7 +1,7 @@
 import { setToken, removeToken, getToken, saveProfilePicture, getProfilePicture, removeProfilePicture, setUsername, setUserID } from "../objects/token.js";
 import { showToast } from "../pages/main.js";
 import { User } from "../objects/user.js";
-import { showFriends } from "./addOnShowFriends.js";
+import { showFriends } from "../functionsSpecific/addOnShowFriends.js";
 
 //FOR USER INFO (always displayed)
 const userPicture = document.getElementById("userPicture");

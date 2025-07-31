@@ -2,7 +2,7 @@ import { setToken, removeToken, getToken, saveProfilePicture, getProfilePicture,
 import { showToast } from "./main.js";
 import { User } from "../objects/user.js";
 import { FriendRequest } from "../objects/friendRequest.js";
-import { showFriends } from "./addOnShowFriends.js";
+import { showFriends } from "../functionsSpecific/addOnShowFriends.js";
 
 //FIXED ELEMENTS (always diplayed/included)
 const incomingRequestBtn = document.getElementById("incomingRequestBtn");
