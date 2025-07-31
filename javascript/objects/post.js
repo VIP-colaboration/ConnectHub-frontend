@@ -81,7 +81,7 @@ export class Post {
         });
         postTitle.textContent = this.title;
         postContent.textContent = this.content;
-
+        retrievePostPicture(postCard, this.id);
         likeCounter.textContent = this.likes.length;
         commentCounter.textContent = this.comments.length;
 
@@ -105,11 +105,32 @@ async function retrieveUserName(usernamePosted, userID) {
         }
 
         const userResponse = await response.json();
-        console.log(userResponse.username);
         
         usernamePosted.textContent = userResponse.username + " posted"
     } catch (error) {
         console.error(error.message);
         usernamePosted.textContent = "Error fetching name";
+    }
+}
+
+async function retrievePostPicture(postCard, postID) {
+    try {
+        const response = await fetch(`http://localhost:8080/get-post-picture/${postID}`, {
+            method: "GET",
+            headers: {
+                "Authorization" : getToken(),
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+
+        const binaryImage = await response.blob();
+        const imageUrl = URL.createObjectURL(binaryImage);
+        postCard.style.backgroundImage = `url('${imageUrl}')`;
+        
+    } catch (error) {
+        console.log("Failed to load post image: " + error.message);
     }
 }
