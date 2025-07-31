@@ -301,10 +301,15 @@ function displayPostSection() {
   console.log("run");
   
   const posts = document.createElement("articles");
+  const postSectionTitle = document.createElement("h1");
+
   posts.setAttribute("id", "posts");
+  postSectionTitle.style.textAlign = "center";
   
+  postSectionTitle.textContent = "Your Posts"
+
   flexibleSection.innerHTML = "";
-  flexibleSection.appendChild(posts);
+  flexibleSection.append(postSectionTitle, posts);
   getPostCardsFromUser();
 
 }

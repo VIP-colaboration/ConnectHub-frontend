@@ -2,9 +2,6 @@ import { Post } from "../objects/post.js";
 import { getToken } from "../objects/token.js";
 import { formatDate } from "./formatDate.js";
 
-
-
-
 export async function getPostCardsFromUser() {
     const postList = document.getElementById("posts");
     try {
@@ -56,5 +53,42 @@ export async function getPostCardsFromUser() {
 
     } catch (error) {
         console.error(error.message);
+    }
+}
+
+export async function getSinglePost(parentNode, postId) {
+    console.log(postId);
+    const promisedPostID = await postId;
+    try {
+        const response = await fetch(`http://localhost:8080/get-post/${promisedPostID}`, {
+            method: "GET",
+            headers: {
+                "Authorization": getToken(),
+            }
+        });
+
+        if (!response.ok) {
+            const message = await response.text();
+            throw new Error(message);
+        }
+
+        const data = await response.json();
+
+        const post = new Post (
+            data.id,
+            data.userId,
+            data.date,
+            data.title,
+            data.content,
+            data.isPrivate,
+            data.likes,
+            data.comments
+        );
+
+        const postCard = post.publishPostCard();
+
+        parentNode.appendChild(postCard);
+    } catch (error) {
+        console.error("getSinglePost: " + error.message);
     }
 }

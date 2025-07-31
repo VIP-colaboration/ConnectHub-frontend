@@ -86,11 +86,17 @@ export class Post {
         likeCounter.textContent = this.likes.length;
         commentCounter.textContent = this.comments.length;
 
+        postTitle.addEventListener("click", () => {this.displayCompletePost(this.id)});
+        postContent.addEventListener("click", () => {this.displayCompletePost(this.id)});
+        postUserCard.addEventListener("click", () => {goToFriend(this.userId)})
+
         return postCard;
     }
 
     displayCompletePost() {
-            showToast("display post: " + this.title)
+            let url = new URL("./post.html", window.location.href);
+            url.searchParams.append("postId", this.id);
+            window.location.href = url;
     }
 }
 
