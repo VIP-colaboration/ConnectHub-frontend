@@ -34,6 +34,8 @@ export class Post {
         likeDiv.classList = "like-or-comment-div";
         commentDiv.classList = "like-or-comment-div";
 
+        postCard.id = this.id;
+
         postUserCard.append(userImg, usernamePosted, postDate);
         likeDiv.append(likeSymbol, likeCounter);
         commentDiv.append(commentSymbol, commentCounter);
