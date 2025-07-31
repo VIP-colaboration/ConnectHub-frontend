@@ -2,6 +2,7 @@ import { setToken, removeToken, getToken, saveProfilePicture, getProfilePicture,
 import { showToast } from "../pages/main.js";
 import { User } from "../objects/user.js";
 import { showFriends } from "../functionsSpecific/addOnShowFriends.js";
+import { getPostCardsFromUser } from "../functionsSpecific/addOnPost.js";
 
 //FOR USER INFO (always displayed)
 const userPicture = document.getElementById("userPicture");
@@ -19,6 +20,14 @@ const commentsCtrl = document.getElementById("commentsCtrl");
 const commentCounter = document.getElementById("commentCounter");
 const likedCtrl = document.getElementById("likedCtrl");
 const likedCounter = document.getElementById("likeCounter");
+//user-nav
+const friendBtn = document.getElementById("friendBtn");
+const conversationsBtn = document.getElementById("conversationsBtn");
+const postsBtn = document.getElementById("postsBtn");
+const commentBtn = document.getElementById("commentBtn");
+const likedBtn = document.getElementById("likedBtn");
+//flex
+const flexibleSection = document.getElementById("flexibleSection");
 
 //FUNCTIONS TO START UPON PAGE LOADING
 substantiateUser();
@@ -43,6 +52,11 @@ visibilityMode.addEventListener("mouseenter", () => {
 visibilityMode.addEventListener("click", () => {
     privateModeSwitch();
 });
+
+friendBtn.addEventListener("click", showFriends);
+
+postsBtn.addEventListener("click", displayPostSection);
+
 
 
 
@@ -92,12 +106,15 @@ async function fetchUser() {
       userResponse.id, 
       userResponse.username, 
       null, 
-      false, 
+      false,
       userResponse.friends, 
       userResponse.conversations, 
+      0,
       userResponse.likes,
       userResponse.privateMode,
     );
+
+    user.numberOfPosts = await getNumberOfUserPosts();
 
     return user;
     
@@ -116,7 +133,7 @@ function displayUserinfo(user) {
     userEmail.textContent = "undefined";
     friendCounter.textContent = ifListNullThenZero(user.friends);
     conversationCounter.textContent = ifListNullThenZero(user.conversations);
-    postCounter.textContent = 0; //TODO fix later
+    postCounter.textContent = user.numberOfPosts;
     commentCounter.textContent = 0; //TODO fix later
     likedCounter.textContent = ifListNullThenZero(user.likes);
     visibilityMode.checked = user.privateMode;
@@ -279,5 +296,34 @@ async function uploadProfilePicture(image) {
   }
 }
 
+function displayPostSection() {
+  console.log("run");
+  
+  const posts = document.createElement("articles");
+  posts.setAttribute("id", "posts");
+  
+  flexibleSection.innerHTML = "";
+  flexibleSection.appendChild(posts);
+  getPostCardsFromUser();
 
+}
 
+async function getNumberOfUserPosts() {
+  try {
+    const response = await fetch("http://localhost:8080/get-number-of-user-posts", {
+      method: "GET",
+      headers: {
+        "Authorization" : getToken()
+      }
+    });
+
+    if (!response.ok) {
+      const message = await response.text();
+      throw new Error(message);
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error(error.message);
+  }
+}

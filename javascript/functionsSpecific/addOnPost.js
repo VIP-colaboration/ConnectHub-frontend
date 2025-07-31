@@ -1,12 +1,10 @@
 import { Post } from "../objects/post.js";
 import { getToken } from "../objects/token.js";
 
-const postList = document.getElementById("posts");
 
 
-
-
-export async function getPostCards() {
+export async function getPostCardsFromUser() {
+    const postList = document.getElementById("posts");
     try {
         const response = await fetch("http://localhost:8080/get-posts-from-user", {
             method: "GET",

@@ -1,7 +1,7 @@
 import { Post } from "../objects/post.js";
 import { getToken, getUserID } from "../objects/token.js";
 import { showToast } from "./main.js";
-import { getPostCards } from "../functionsSpecific/addOnPost.js";
+import { getPostCardsFromUser } from "../functionsSpecific/addOnPost.js";
 
 const openPostFormBtn = document.getElementById("openPostFormBtn");
 const postForm = document.getElementById("postForm");
@@ -12,7 +12,7 @@ const postBtn = document.getElementById("postBtn");
 const cancelPostBtn = document.getElementById("cancelPostBtn");
 const postList = document.getElementById("posts");
 
-getPostCards();
+getPostCardsFromUser();
 
 const postCards = document.querySelectorAll("post-card");
 

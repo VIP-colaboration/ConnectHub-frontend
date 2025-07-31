@@ -10,6 +10,7 @@ friendsContainerTitle.textContent = "Friends";
 
 //displays the friends user, empties the friend container to avoid multiplication of data on the screen
 export function showFriends (user) {
+  flexibleSection.innerHTML = "";
   friendsContainer.innerHTML = ""; //to avoid multiplication
     friendsContainer.appendChild(friendsContainerTitle)
     for (let friend of user.friends) {
@@ -29,7 +30,7 @@ export function showFriends (user) {
         friendsContainer.appendChild(singleFriend);
     }
 
-    flexibleSection.innerHTML = "";
+    
     flexibleSection.appendChild(friendsContainer);
 }
 

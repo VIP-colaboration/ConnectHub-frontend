@@ -1,0 +1,197 @@
+.hiddenPostCard {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: 1s;
+}
+
+.showPostCard {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0%);
+}
+
+
+.posts-container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#posts {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem;
+    margin-top: 5rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.post-card {
+    width: 90%;
+    max-width: 25rem;
+    height: 25rem;
+    border: 2px solid #F1C40F;
+    border-radius: 1rem;
+    background-image: none;
+    background-size:cover;
+    background-position: center;
+    background-color: #2274A5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.25rem;
+}
+
+
+.post-user-card {
+    background-color: rgba(34, 116, 165, 0.8);
+    color: #F1C40F;
+    border-radius: 2.5rem;
+    width: 100%;
+    max-width: 20rem;
+    align-self: flex-start;
+    display: grid;
+    grid-template-columns: 5rem auto;
+    grid-template-rows: 2.5rem 2.5rem;
+}
+
+.post-user-card > img {
+    background-color: blueviolet;
+    border-radius: 2.5rem;
+    align-self: center;
+    height: 5rem;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.post-user-card > h3 {
+    margin-left: 1rem;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.post-user-card > i {
+    margin-left: 1rem;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.post-title {
+    width: 100%;
+    margin-top: -0.25rem;
+    margin-bottom: auto;
+    text-align: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2.5rem;
+    -webkit-text-fill-color: #2274A5;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #F1C40F;
+}
+
+.post-content {
+    margin-top: auto;
+    margin-bottom: 0.25rem;
+    width: 90%;
+    text-indent: 0.5rem;
+    padding: 0.5rem;
+    background-color: rgba(241, 196, 15, 0.8);
+    color: #2274A5;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5em;
+    max-height: 4.5em;
+}
+
+.post-like-and-comment-tab {
+    width: 90%;
+    margin-right: 0.5rem;
+    margin-left: auto;
+    display: flex;
+    gap: 1rem;
+    justify-content: end;
+}
+
+.like-or-comment-div {
+    background-color: rgba(241, 196, 15, 0.8);
+    border-radius: 1.25rem;
+    height: 2.5rem;
+    width: 5rem;
+    display: flex;
+    gap: 1;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.like-or-comment-div svg {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+/* ------------------------------------------- SCREEN RESOLUTIONS ----------------------------------------------*/
+
+@media only screen and (min-width: 1024px) {
+    #posts {
+        margin-top: 1rem;
+        display: grid;
+        grid-template-columns: 25rem 25rem;
+        grid-auto-flow: row;
+        max-width: 49.25rem;
+    }
+        
+    .post-card {
+        place-content: center;
+    }
+
+    /*for transition effect (adds a subtle shuffling effect)*/
+    .post-card:nth-child(odd) {
+        transition-delay: 100ms;
+    }
+
+    .post-card:nth-child(even) {
+        transition-delay: 200ms;
+    }
+}
+
+@media only screen and (min-width: 1300px) {
+    #posts {
+        display: grid;
+        grid-template-columns: 25rem 25rem 25rem;
+        grid-auto-flow: row;
+        max-width: 75.25rem;  
+    }
+
+    /*removing transition effect delay (would need a proper reoworking in JS for 3 and 4 column which doesn't really pay off visually) */
+    .post-card,
+    .post-card:nth-child(even), /* needs to be specified, otherwise the more specific targeting takes precedence */
+    .post-card:nth-child(odd) {
+        transition-delay: 0ms !important;
+    }
+}
+
+@media only screen and (min-width: 1920px) {  
+    #posts {
+        grid-template-columns: 25rem 25rem 25rem 25rem;
+        gap: 1rem;
+        grid-auto-flow: row;
+        max-width: 101.25rem;
+        
+    }
+}
