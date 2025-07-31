@@ -2,6 +2,10 @@ main {
     padding-top: 4rem;
 }
 
+h1 {
+    color: #2274A5;
+}
+
 .post-form {
     background-color: #2274A5;
     display: flex;

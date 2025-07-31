@@ -1,5 +1,6 @@
 import { getToken } from "../objects/token.js";
 
+//gets the friend's picture based on the friend ID works even if friend actually is user (handled on backend)
 export async function fetchFriendPicture (avatar, friendID) {  
     try {
         const response = await fetch(`http://localhost:8080/fetch-friend-profile-picture/${friendID}`, {

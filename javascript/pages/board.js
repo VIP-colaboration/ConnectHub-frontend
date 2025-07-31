@@ -53,11 +53,13 @@ async function savePost() {
     }
     console.log(postID);
     
-    if (!hasPicture()) {
-        return;
+    if (hasPicture()) {
+        savePostPicture(postID);
+    } else {
+        window.location.reload();
     }
     
-    savePostPicture(postID);
+    
 }
 
 /**
@@ -137,6 +139,7 @@ async function savePostPicture(postId) {
         }
 
         showToast("Post image saved.");
+        window.location.reload();
 
     } catch (error) {
         showToast(error.message);
