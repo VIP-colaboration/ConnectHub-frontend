@@ -53,6 +53,7 @@
 .post-user-card {
     background-color: rgba(34, 116, 165, 0.8);
     color: #F1C40F;
+    border: 2px solid #F1C40F;
     border-radius: 2.5rem;
     width: 100%;
     max-width: 20rem;
@@ -63,10 +64,14 @@
 }
 
 .post-user-card > img {
-    background-color: blueviolet;
+    background-color: none;
+    border: 2px solid rgba(241, 196, 15, 0.1);
     border-radius: 2.5rem;
     align-self: center;
+    margin-left: -2px;
     height: 5rem;
+    width: 5rem;
+    object-fit: cover;
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 1;

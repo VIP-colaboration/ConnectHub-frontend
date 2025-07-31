@@ -1,5 +1,6 @@
 import { getToken } from "./token.js";
 import { formatDate } from "../functionsSpecific/formatDate.js";
+import { fetchFriendPicture } from "../functionsSpecific/getUsersProfilePicture.js";
 
 export class Post {
     constructor (id, userId, date, title, content, isPrivate, likes, comments) {
@@ -70,7 +71,7 @@ export class Post {
         likeSymbol.setAttribute("viewBox", "0 0 512 512");
         commentSymbol.setAttribute("viewBox", "0 0 64 64");
 
-        userImg.src = "../logos/connecthublogoINVERTEDFOCUSED.png"
+        userImg.src = fetchFriendPicture(userImg, this.userId);
         retrieveUserName(usernamePosted, this.userId);
         postDate.textContent = formatDate(this.date);
         postTitle.textContent = this.title;

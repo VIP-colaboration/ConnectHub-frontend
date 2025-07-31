@@ -4,6 +4,7 @@ import { formatDate } from "./formatDate.js";
 
 
 
+
 export async function getPostCardsFromUser() {
     const postList = document.getElementById("posts");
     try {
