@@ -1,6 +1,8 @@
 import { getToken } from "./token.js";
 import { formatDate } from "../functionsSpecific/formatDate.js";
 import { fetchFriendPicture } from "../functionsSpecific/getUsersProfilePicture.js";
+import { showToast } from "../pages/main.js";
+import { goToFriend } from "../functionsSpecific/addOnShowFriends.js"
 
 export class Post {
     constructor (id, userId, date, title, content, isPrivate, likes, comments) {
@@ -39,6 +41,10 @@ export class Post {
         commentDiv.classList = "like-or-comment-div";
 
         postCard.id = this.id;
+
+        postTitle.addEventListener("click", () => {this.displayCompletePost()});
+        postContent.addEventListener("click", () => {this.displayCompletePost()});
+        postUserCard.addEventListener("click", () => {goToFriend(this.userId)})
 
         postUserCard.append(userImg, usernamePosted, postDate);
         likeDiv.append(likeSymbol, likeCounter);
@@ -81,6 +87,10 @@ export class Post {
         commentCounter.textContent = this.comments.length;
 
         return postCard;
+    }
+
+    displayCompletePost() {
+            showToast("display post: " + this.title)
     }
 }
 

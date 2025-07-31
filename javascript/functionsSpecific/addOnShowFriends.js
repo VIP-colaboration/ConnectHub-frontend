@@ -1,5 +1,6 @@
 import { getToken } from "../objects/token.js";
 import { fetchFriendPicture } from "../functionsSpecific/getUsersProfilePicture.js";
+import { showToast } from "../pages/main.js";
 
 const flexibleSection = document.getElementById("flexibleSection");
 const friendsContainer = document.createElement("section");
@@ -36,7 +37,7 @@ export function showFriends (user) {
 }
 
 //will allow to see friend's page
-async function goToFriend(friendID) {
+export async function goToFriend(friendID) {
   //TODO write function
   showToast(friendID);
 }
