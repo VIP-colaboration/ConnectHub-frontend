@@ -2,10 +2,6 @@ main {
     padding-top: 4rem;
 }
 
-.hiddenForm {
-    display: none;
-}
-
 .post-form {
     background-color: #2274A5;
     display: flex;
@@ -20,6 +16,17 @@ main {
     padding: 0.5rem;
     font-size: 1.5rem;
     margin-top: 0.5rem;
+
+    transform-origin: top;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+    margin-bottom: 1rem;
+}
+
+.hiddenForm {
+    height: 0;
+    transform: scaleY(0);
+    opacity: 0;
+    margin-bottom: 0;
 }
 
 .post-form input {
