@@ -3,6 +3,7 @@ import { showToast } from "../pages/main.js";
 import { User } from "../objects/user.js";
 import { showFriends } from "../functionsSpecific/addOnShowFriends.js";
 import { getPostCardsFromUser } from "../functionsSpecific/addOnPost.js";
+import { formatDate } from "../functionsSpecific/formatDate.js";
 
 //FOR USER INFO (always displayed)
 const userPicture = document.getElementById("userPicture");

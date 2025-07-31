@@ -1,4 +1,5 @@
 import { getToken } from "./token.js";
+import { formatDate } from "../functionsSpecific/formatDate.js";
 
 export class Post {
     constructor (id, userId, date, title, content, isPrivate, likes, comments) {
@@ -71,14 +72,7 @@ export class Post {
 
         userImg.src = "../logos/connecthublogoINVERTEDFOCUSED.png"
         retrieveUserName(usernamePosted, this.userId);
-        const date = new Date(this.date);
-        postDate.textContent = date.toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        });
+        postDate.textContent = formatDate(this.date);
         postTitle.textContent = this.title;
         postContent.textContent = this.content;
         retrievePostPicture(postCard, this.id);

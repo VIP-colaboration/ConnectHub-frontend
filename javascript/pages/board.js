@@ -2,6 +2,7 @@ import { Post } from "../objects/post.js";
 import { getToken, getUserID } from "../objects/token.js";
 import { showToast } from "./main.js";
 import { getPostCardsFromUser } from "../functionsSpecific/addOnPost.js";
+import { formatDate } from "../functionsSpecific/formatDate.js";
 
 const openPostFormBtn = document.getElementById("openPostFormBtn");
 const postForm = document.getElementById("postForm");

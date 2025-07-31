@@ -1,5 +1,6 @@
 import { Post } from "../objects/post.js";
 import { getToken } from "../objects/token.js";
+import { formatDate } from "./formatDate.js";
 
 
 
@@ -26,7 +27,7 @@ export async function getPostCardsFromUser() {
             const post = new Post(
                 postResponse.id,
                 postResponse.userId,
-                new Date("1969-08-15"),
+                postResponse.date,
                 postResponse.title,
                 postResponse.content,
                 postResponse.private,
