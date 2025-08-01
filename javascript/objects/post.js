@@ -40,6 +40,9 @@ export class Post {
         likeDiv.classList = "like-or-comment-div";
         commentDiv.classList = "like-or-comment-div";
 
+        commentCounter.setAttribute("id", "commentCounter");
+        likeCounter.setAttribute("id", "likeCounter");
+
         postCard.id = this.id;
 
         postTitle.addEventListener("click", () => {this.displayCompletePost()});

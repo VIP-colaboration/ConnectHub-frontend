@@ -82,7 +82,7 @@ h2 {
 .post-title {
     width: 100%;
     margin-top: -0.25rem;
-    margin-bottom: auto;
+    margin-top: 15%;
     text-align: center;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 2.5rem;
@@ -143,4 +143,36 @@ h2 {
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
+}
+
+
+
+.comment-form {
+    width: 90%;
+    border: 1px solid #2274A5;
+    border-radius: 1rem;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+}
+
+.comment-form textarea {
+    width: 95%;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    min-height: 8rem;
+    font-size: 1.5rem;
+}
+
+.comment-form > div {
+    align-self: flex-end;
+    display: flex;
+    gap: 1rem;
+}
+
+.hidden-comment-form {
+    display: none;
 }

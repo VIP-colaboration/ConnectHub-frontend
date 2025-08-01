@@ -8,6 +8,12 @@
     display: flex;
     flex-direction: column;
     border-radius: 1rem;
+    gap: 0;
+}
+
+.comment-card p {
+    margin: 0;
+    font-size: 1.5rem;
 }
 
 .comment-info {
@@ -23,6 +29,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    font-style: italic;
 }
 
 .comment-user-card img {

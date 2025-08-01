@@ -50,9 +50,6 @@ async function displaySinglePost(postId) {
             data.comments
         );
 
-        console.log(JSON.stringify(post));
-        
-
         const postCard = post.publishPostCard();
 
         postContainer.appendChild(postCard);
@@ -76,13 +73,19 @@ function displayDeleteBtn(post) {
 
 function displayCommentSection(post) {
     const commentSection = document.createElement("section");
+    const addCommentBtn = document.createElement("button");
     const commentSectionTitle = document.createElement("h2");
+    const addCommentForm = commentForm();
 
     commentSection.classList = "comment-section";
+    addCommentBtn.classList = "primaryBtn";
+
+    addCommentBtn.textContent = "Add comment +"
     commentSectionTitle.textContent = "Comments"
-    //TODO add 'add comment form'
     
-    commentSection.appendChild(commentSectionTitle);
+    addCommentBtn.addEventListener("click", () => { addCommentForm.classList.toggle("hidden-comment-form") });
+
+    commentSection.append(addCommentBtn, addCommentForm, commentSectionTitle);
 
     postContainer.appendChild(commentSection);
 
@@ -91,8 +94,38 @@ function displayCommentSection(post) {
 
 async function fetchComments(parentNode) {
 
+    const commentCounter = document.getElementById("commentCounter");
+
+    commentCounter.textContent = placeholderComments.length;
+
     for (let comment of placeholderComments) {
         parentNode.appendChild(comment.publishComment());
     }
     
+}
+
+function commentForm() {
+    const commentForm = document.createElement("div");
+    const commentTextArea = document.createElement("textarea");
+    const btnDiv = document.createElement("div");
+    const commentBtn = document.createElement("button");
+    const cancelBtn = document.createElement("button");
+
+
+    commentTextArea.setAttribute("id", "commentTextArea");
+    commentBtn.setAttribute("id", "commentBtn");
+    cancelBtn.setAttribute("id", "cancelBtn");
+    commentTextArea.setAttribute("placeholder", "Write your comment here")
+
+    commentForm.classList = "comment-form hidden-comment-form";
+    commentBtn.classList = "primaryBtn";
+    cancelBtn.classList = "secondaryBtn";
+
+    commentBtn.textContent = "Publish";
+    cancelBtn.textContent = "Cancel";
+
+    btnDiv.append(commentBtn, cancelBtn);
+    commentForm.append(commentTextArea, btnDiv);
+
+    return commentForm;
 }

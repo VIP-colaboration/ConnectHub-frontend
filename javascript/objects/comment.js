@@ -46,7 +46,7 @@ export class Comment {
         commentUserCard.classList = "comment-user-card";
         likeTab.classList = "like-tab";
 
-        userImg.src = 'url("../logos/connecthublogo.png")';
+        userImg.src = "../pictures/std-profile-picture.png";
         usernameCommenter.textContent = this.userName;
         commentDate.textContent = formatDate(this.date);
         commentContent.textContent = this.content;
