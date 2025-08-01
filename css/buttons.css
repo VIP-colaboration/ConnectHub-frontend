@@ -23,6 +23,11 @@ button {
     border: 2px solid #2274A5;
 }
 
+.cautionBtn {
+    background-color: red;
+    color: white;
+}
+
 .primaryBtn:hover {
     box-shadow: 4px 6px 15px rgba(241, 196, 15, 0.4);
     transform: translateY(-2px);
@@ -31,6 +36,12 @@ button {
 
 .secondaryBtn:hover {
     box-shadow: 4px 6px 15px rgba(34, 116, 165, 0.8);
+    transform: translateY(-2px);
+    transition: all 0.2s ease;
+}
+
+.cautionBtn:hover {
+    box-shadow: 4px 6px 15px red;
     transform: translateY(-2px);
     transition: all 0.2s ease;
 }

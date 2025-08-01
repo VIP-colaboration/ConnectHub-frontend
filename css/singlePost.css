@@ -1,5 +1,11 @@
+h2 {
+    color: #2274A5;
+    margin: 0;
+}
+
 #singlePost {
-    width: 100%;
+    width: 90%;
+    max-width: 50rem;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -9,7 +15,7 @@
 }
 
 .post-card {
-    width: 90%;
+    width: 100%;
     max-width: 50rem;
     border: 2px solid #F1C40F;
     border-radius: 1rem;
@@ -21,7 +27,7 @@
     flex-direction: column;
     align-items: center;
     padding: 0.25rem;
-    min-height: 25rem;
+    min-height: 50rem;
     height: fit-content;
 }
 
@@ -96,14 +102,8 @@
     color: #2274A5;
     font-size: 1.5rem;
     border-radius: 1rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.5em;
-    max-height: 4.5em;
     cursor: pointer;
+    height: fit-content;
 }
 
 .post-like-and-comment-tab {
@@ -129,4 +129,9 @@
 .like-or-comment-div svg {
     height: 1.5rem;
     width: 1.5rem;
+}
+
+.cautionBtn {
+    align-self: flex-end;
+    margin-top: 0.5rem;
 }
