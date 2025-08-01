@@ -77,6 +77,8 @@ function displayDeleteBtn(post) {
 function displayCommentSection(post) {
     const commentSection = document.createElement("section");
     const commentSectionTitle = document.createElement("h2");
+
+    commentSection.classList = "comment-section";
     commentSectionTitle.textContent = "Comments"
     //TODO add 'add comment form'
     

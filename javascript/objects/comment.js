@@ -17,6 +17,7 @@ export class Comment {
         const usernameCommenter = document.createElement("h3");
         const commentDate = document.createElement("i");
         const commentContent = document.createElement("p");
+        const commentInfo =document.createElement("div");
         const likeTab = document.createElement("div");
         const likeSymbol = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         const likeCounter = document.createElement("p");
@@ -25,7 +26,7 @@ export class Comment {
         
         likeSymbol.innerHTML = `
                 <g>
-                    <path fill="#2274A5" d="M462.8,181.564c-12.3-10.5-27.7-16.2-43.3-16.2h-15.8h-56.9h-32.4v-75.9c0-31.9-9.3-54.9-27.7-68.4
+                    <path fill="#F1C40F" d="M462.8,181.564c-12.3-10.5-27.7-16.2-43.3-16.2h-15.8h-56.9h-32.4v-75.9c0-31.9-9.3-54.9-27.7-68.4
                     c-29.1-21.4-69.2-9.2-70.9-8.6c-5,1.6-8.4,6.2-8.4,11.4v84.9c0,27.7-13.2,51.2-39.3,69.9c-19.5,14-39.4,20.1-41.5,20.8l-2.9,0.7
                     c-4.3-7.3-12.2-12.2-21.3-12.2H24.7c-13.6,0-24.7,11.1-24.7,24.7v228.4c0,13.6,11.1,24.7,24.7,24.7h77.9c7.6,0,14.5-3.5,19-8.9
                     c12.5,13.3,30.2,21.6,49.4,21.6h65.9h6.8h135.1c45.9,0,75.2-24,80.4-66l26.9-166.9C489.8,221.564,480.9,196.964,462.8,181.564z
@@ -41,8 +42,9 @@ export class Comment {
         
 
         commentCard.classList = "comment-card";
+        commentInfo.classList = "comment-info";
         commentUserCard.classList = "comment-user-card";
-        likeTab.classList = "comment-like-tab";
+        likeTab.classList = "like-tab";
 
         userImg.src = 'url("../logos/connecthublogo.png")';
         usernameCommenter.textContent = this.userName;
@@ -52,7 +54,8 @@ export class Comment {
 
         commentUserCard.append(userImg, usernameCommenter, commentDate);
         likeTab.append(likeSymbol, likeCounter);
-        commentCard.append(commentContent, commentUserCard, likeTab);
+        commentInfo.append(commentUserCard, likeTab);
+        commentCard.append(commentContent, commentInfo);
 
         return commentCard;
     }

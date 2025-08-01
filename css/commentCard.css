@@ -1,0 +1,55 @@
+.comment-card {
+    border: 1px solid #2274A5;
+    width: 100%;
+    max-width: 50rem;
+    color: #2274A5;
+    padding: 1rem;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+}
+
+.comment-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    align-self: flex-end;
+    margin-bottom: 0;
+}
+
+.comment-user-card {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.comment-user-card img {
+    height: 2rem;
+    width: 2rem;
+    object-fit: cover;
+    border-radius: 5rem;
+    background-size: cover;
+    background-position: center;
+    border: 3px solid #F1C40F;
+}
+
+.like-tab {
+    cursor: pointer;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: #2274A5 ;
+    color: #F1C40F;
+    width: fit-content;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 1rem;
+}
+
+.like-tab svg{
+    height: 1.5rem;
+}
+
