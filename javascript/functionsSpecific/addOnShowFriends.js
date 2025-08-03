@@ -1,5 +1,5 @@
 import { getToken } from "../objects/token.js";
-import { fetchFriendPicture } from "../functionsSpecific/getUsersProfilePicture.js";
+import { fetchFriendPicture } from "./getUsersInfo.js";
 import { showToast } from "../pages/main.js";
 
 const flexibleSection = document.getElementById("flexibleSection");

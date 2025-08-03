@@ -1,4 +1,5 @@
 import { formatDate } from "../functionsSpecific/formatDate.js";
+import { fetchFriendPicture, retrieveUserName } from "../functionsSpecific/getUsersInfo.js";
 
 export class Comment {
     constructor (id, date, userId, username, content, likes) {
@@ -56,6 +57,8 @@ export class Comment {
         likeTab.append(likeSymbol, likeCounter);
         commentInfo.append(commentUserCard, likeTab);
         commentCard.append(commentContent, commentInfo);
+
+        fetchFriendPicture(userImg, this.userId);
 
         return commentCard;
     }

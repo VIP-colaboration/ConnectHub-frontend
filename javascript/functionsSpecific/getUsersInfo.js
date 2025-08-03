@@ -32,3 +32,31 @@ export async function fetchFriendPicture (avatar, friendID) {
      avatar.src = '../pictures/std-profile-picture.png';
   }
 }
+
+//returns the username of anyusers
+export async function retrieveUserName(userID) {
+    try {
+        const response = await  fetch(`http://localhost:8080/get-user/${userID}`, {
+            method: "GET",
+            headers: {
+                "Authorization" : getToken(),
+                "Content-type" : "Application/json"
+            },
+        });
+
+        if (!response.ok) {
+            const message = await response.text();
+            throw new Error(message);
+        }
+
+        const userResponse = await response.json();
+        const username = userResponse.username;
+        
+
+        return username;
+
+    } catch (error) {
+        console.error(error.message);
+        return "Error fetching name";
+    }
+}

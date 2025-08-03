@@ -1,6 +1,6 @@
 import { getToken } from "./token.js";
 import { formatDate } from "../functionsSpecific/formatDate.js";
-import { fetchFriendPicture } from "../functionsSpecific/getUsersProfilePicture.js";
+import { fetchFriendPicture, retrieveUserName } from "../functionsSpecific/getUsersInfo.js";
 import { showToast } from "../pages/main.js";
 import { goToFriend } from "../functionsSpecific/addOnShowFriends.js"
 
@@ -81,7 +81,7 @@ export class Post {
         commentSymbol.setAttribute("viewBox", "0 0 64 64");
 
         userImg.src = fetchFriendPicture(userImg, this.userId);
-        retrieveUserName(usernamePosted, this.userId);
+        setPostUsername(usernamePosted, this.userId);
         postDate.textContent = formatDate(this.date);
         postTitle.textContent = this.title;
         postContent.textContent = this.content;
@@ -103,29 +103,7 @@ export class Post {
     }
 }
 
-async function retrieveUserName(usernamePosted, userID) {
-    try {
-        const response = await  fetch(`http://localhost:8080/get-user/${userID}`, {
-            method: "GET",
-            headers: {
-                "Authorization" : getToken(),
-                "Content-type" : "Application/json"
-            },
-        });
 
-        if (!response.ok) {
-            const message = await response.text();
-            throw new Error(message);
-        }
-
-        const userResponse = await response.json();
-        
-        usernamePosted.textContent = userResponse.username + " posted"
-    } catch (error) {
-        console.error(error.message);
-        usernamePosted.textContent = "Error fetching name";
-    }
-}
 
 async function retrievePostPicture(postCard, postID) {
     try {
@@ -147,4 +125,11 @@ async function retrievePostPicture(postCard, postID) {
     } catch (error) {
         console.log("Failed to load post image: " + error.message);
     }
+}
+
+async function setPostUsername (usernamePosted, userID) {
+    const username = await retrieveUserName(userID);
+    console.log("Post username: " + username);
+    
+    usernamePosted.textContent = username + " posted"
 }
