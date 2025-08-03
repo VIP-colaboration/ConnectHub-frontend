@@ -3,6 +3,9 @@ import { removeProfilePicture, removeToken, removeUserID, removeUsername } from 
 headerMaker();
 footerMaker();
 
+/**
+ * self-explanatory
+ */
 function headerMaker () {
     const header = document.createElement("header");
     const linkHome = document.createElement("a");
@@ -151,6 +154,9 @@ function headerMaker () {
     })
 }
 
+/**
+ * self-explanatory
+ */
 function footerMaker() {
   const footer = document.createElement("footer");
   const copyright = document.createElement("p");
@@ -185,6 +191,7 @@ function footerMaker() {
   document.body.append(footer);
 }
 
+//TODO: IMPLEMENT
 function addSearchInput () {
   const inputDiv = document.createElement("div");
   const searchInput = document.createElement("input");
@@ -238,6 +245,9 @@ function addSearchInput () {
   return inputDiv;
 }
 
+/**
+ * self-explanatory
+ */
 function logout () {
   removeToken();
   removeProfilePicture();

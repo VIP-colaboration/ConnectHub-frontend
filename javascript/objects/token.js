@@ -1,3 +1,5 @@
+//HANDLES LOCAL STORAGE
+
 export function setToken(token) {
     localStorage.setItem("ch_token", token);
 }

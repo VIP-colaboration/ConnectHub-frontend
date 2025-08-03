@@ -14,6 +14,10 @@ export class FriendRequest {
         this.updated = updated;
     }
 
+    /**
+     * publish the FriendRequest for the requested User
+     * @returns a requestDIv display relevant elements
+     */
     requestElementsForRequested() {
         const requestDiv = document.createElement("div");
         const responseDiv = document.createElement("div");
@@ -57,6 +61,10 @@ export class FriendRequest {
         return requestDiv;
     }
 
+    /**
+     * publish the FriendRequest for the requesting user
+     * @returns a requestDIv display relevant elements
+     */
     requestElementsForRequester() {
         const requestDiv = document.createElement("div");
         const responseDiv = document.createElement("div");
@@ -89,6 +97,11 @@ export class FriendRequest {
     }
 }
 
+/**
+ * sends a request to API to accept friendRequest
+ * @param {} requestDiv so the diaplayed element can be remomved
+ * @param {*} requestID to identify request to server
+ */
 async function acceptfriendRequest(requestDiv, requestID) {
     let message;
 
@@ -114,6 +127,11 @@ async function acceptfriendRequest(requestDiv, requestID) {
     }
 }
 
+/**
+ * sends a request to API to decline friendRequest
+ * @param {} requestDiv so the diaplayed element can be remomved
+ * @param {*} requestID to identify request to server
+ */
 async function declineFriendRequest(requestDiv, requestID) {
     let message;
 
@@ -140,6 +158,11 @@ async function declineFriendRequest(requestDiv, requestID) {
     }
 }
 
+/**
+ * checks if a message is included in the requested
+ * @param {*} message 
+ * @returns either the message (if included) or standard message ("no message...")
+ */
 function checkMessages(message) {
     if (!message) {
         return "No message included in request."

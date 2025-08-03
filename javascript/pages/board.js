@@ -33,6 +33,9 @@ postBtn.addEventListener("click", () => {
 
 cancelPostBtn.addEventListener("click", emptyAndClosePostForm);
 
+/**
+ * empties post form and changes style to hiddenForm
+ */
 function emptyAndClosePostForm() {
     postTitleInput.value = "";
     postTextInput.value = "";
@@ -111,7 +114,7 @@ function hasPicture() {
 }
 
 /**
- * 
+ * saves post background image to server through API-endpoint
  * @param {*} postId 
  */
 async function savePostPicture(postId) {

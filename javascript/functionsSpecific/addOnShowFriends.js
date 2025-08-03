@@ -36,7 +36,7 @@ export function showFriends (user) {
     flexibleSection.appendChild(friendsContainer);
 }
 
-//will allow to see friend's page
+//TODO will allow to see friend's page
 export async function goToFriend(friendID) {
   //TODO write function
   showToast(friendID);

@@ -297,9 +297,11 @@ async function uploadProfilePicture(image) {
   }
 }
 
+/**
+ * empties flexibleSection and inserts postSection
+ * calls on getPostCardsFromUser
+ */
 function displayPostSection() {
-  console.log("run");
-  
   const posts = document.createElement("articles");
   const postSectionTitle = document.createElement("h1");
 
@@ -314,6 +316,10 @@ function displayPostSection() {
 
 }
 
+/**
+ * updates the number of user-post in user.info by calling API-endpoint.
+ * @returns 
+ */
 async function getNumberOfUserPosts() {
   try {
     const response = await fetch("http://localhost:8080/get-number-of-user-posts", {

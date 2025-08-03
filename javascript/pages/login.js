@@ -13,10 +13,17 @@ loginBtn.addEventListener("click", (e) => {
     login();
 });
 
+
+/**
+ * self-explanatory
+ */
 function goToRegistrationPage() {
     window.location.href = "../html/register.html";
 }
 
+/**
+ * self-explanatory
+ */
 async function login() {
     console.log("login running");
     let message;

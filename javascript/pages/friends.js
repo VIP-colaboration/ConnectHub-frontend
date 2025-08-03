@@ -36,6 +36,9 @@ showMessageInput.addEventListener("click", () => {
 setUpUserDetail();
 checkForFriendRequest();
 
+/**
+ * sets up logged in user details based on localStorage data (since user must log in, details are aved in local storage)
+ */
 function setUpUserDetail() {
     const localStorageImg = localStorage.getItem("profilePicture");
     
@@ -50,6 +53,9 @@ function setUpUserDetail() {
     userID.textContent = getUserID();
 }
 
+/**
+ * checks if there are friend request waiting on server, if not a message is disaplyed
+ */
 async function checkForFriendRequest() {
     flexibleSection.innerHTML = "";
 
@@ -101,7 +107,10 @@ async function checkForFriendRequest() {
     }
 }
 
-
+/**
+ * sends friend request to API
+ * @returns 
+ */
 async function sendFriendRequest() {
     let message;
     if (!friendRequestField.value) {
@@ -137,6 +146,10 @@ async function sendFriendRequest() {
     }
 }
 
+/**
+ * empties flexible section and sets up section to show outgoing request and calls API-endpoint
+ * fetched data is then displayed
+ */
 async function showOutgoingRequest() {
     flexibleSection.innerHTML = "";
     
@@ -188,6 +201,9 @@ async function showOutgoingRequest() {
     }   
 }
 
+/**
+ * gets user's friends from API (not locally as to have latest update) and calls on show friends
+ */
 async function getUserAndShowFriends() {
     let message;
     try {

@@ -104,7 +104,11 @@ export class Post {
 }
 
 
-
+/**
+ * retrieves the posts image and sets it as the background of the post. If there is no image sets backgroundImage to 'none
+ * @param {*} postCard which will have its background changed
+ * @param {*} postID to send to API
+ */
 async function retrievePostPicture(postCard, postID) {
     try {
         const response = await fetch(`http://localhost:8080/get-post-picture/${postID}`, {
@@ -124,6 +128,7 @@ async function retrievePostPicture(postCard, postID) {
         
     } catch (error) {
         console.log("Failed to load post image: " + error.message);
+        postCard.style.backgroundImage = "none";
     }
 }
 

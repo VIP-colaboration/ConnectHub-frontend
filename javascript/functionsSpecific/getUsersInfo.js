@@ -1,6 +1,10 @@
 import { getToken } from "../objects/token.js";
 
-//gets the friend's picture based on the friend ID works even if friend actually is user (handled on backend)
+/**
+ * gets the friend's picture based on the friend ID works even if friend actually is user (handled on backend)
+ * @param {*} avatar to which the image will be added
+ * @param {*} friendID to look up image
+ */
 export async function fetchFriendPicture (avatar, friendID) {  
     try {
         const response = await fetch(`http://localhost:8080/fetch-friend-profile-picture/${friendID}`, {
@@ -12,7 +16,7 @@ export async function fetchFriendPicture (avatar, friendID) {
 
     if (response.status === 404) {
       avatar.src = '../pictures/std-profile-picture.png';
-      return avatar;
+      return;
     }
 
     if (!response.ok) {
@@ -33,7 +37,11 @@ export async function fetchFriendPicture (avatar, friendID) {
   }
 }
 
-//returns the username of anyusers
+/**
+ * returns the username of anyusers based on their userID
+ * @param {*} userID 
+ * @returns username in string form
+ */
 export async function retrieveUserName(userID) {
     try {
         const response = await  fetch(`http://localhost:8080/get-user/${userID}`, {

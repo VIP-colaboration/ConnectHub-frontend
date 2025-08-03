@@ -22,7 +22,12 @@ const placeholderComments = [
 
 displaySinglePost(postId);
 
-
+/**
+ * fetches post from server based on UUID in URLSearchParams (line 6-8)
+ * calls displayDeleteBtn (if user is post author, delete button shows)
+ * calls on display comment section.
+ * @param {*} postId 
+ */
 async function displaySinglePost(postId) {
     try {
         const response = await fetch(`http://localhost:8080/get-post/${postId}`, {
@@ -62,6 +67,10 @@ async function displaySinglePost(postId) {
     }
 }
 
+/**
+ * displays selete button for the post if user owns the post (post.userId is the same as userID saved in localstorage)
+ * @param {} post 
+ */
 function displayDeleteBtn(post) {
     if(post.userId === getUserID()) {
         const deleteBtn = document.createElement("button");
@@ -71,6 +80,11 @@ function displayDeleteBtn(post) {
     }
 }
 
+/**
+ * creates a comment section and populates it with title and a comment form (separate function)
+ * calls on fetchComments to load the comments
+ * @param {*} post 
+ */
 function displayCommentSection(post) {
     const commentSection = document.createElement("section");
     const addCommentBtn = document.createElement("button");
@@ -92,6 +106,11 @@ function displayCommentSection(post) {
     fetchComments(commentSection)
 }
 
+
+/**
+ * TODO implement function correctly (CURRENTLY FOR FILLER COMMENTS)
+ * @param {*} parentNode 
+ */
 async function fetchComments(parentNode) {
 
     const commentCounter = document.getElementById("commentCounter");
@@ -104,6 +123,10 @@ async function fetchComments(parentNode) {
     
 }
 
+/**
+ * creates the commentForm
+ * @returns commentForm
+ */
 function commentForm() {
     const commentForm = document.createElement("div");
     const commentTextArea = document.createElement("textarea");

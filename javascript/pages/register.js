@@ -8,6 +8,10 @@ const confirmPasswordField = document.getElementById("confirmPasswordInput");
 
 registerButton.addEventListener("click", register);
 
+/**
+ * self-explanatory
+ * calls on performAutoLogin
+ */
 async function register() {    
     if (!usernameField.value) {
         showToast("You haven't filled the username. This is a mandatory field.");
@@ -54,7 +58,7 @@ async function register() {
     } catch (error) {
         message = error.message;
     }
-
+    // to allow toast display
     setTimeout(function() {
             showToast(message);
         }, 3000);
@@ -68,6 +72,11 @@ async function register() {
 
 }
 
+/**
+ * after registering the user is autmatically looged, avoids the need to logg in directly after registering
+ * @param {*} username 
+ * @param {*} password 
+ */
 async function performAutoLogin(username, password) {
     try {
         const response = await fetch("http://localhost:8080/login", {
