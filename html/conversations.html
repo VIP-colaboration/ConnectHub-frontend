@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConnectHub - Conversations</title>
+    <link rel="icon" type="image/png" href="../logos/connecthublogo.png">
+    <script type="module"  src="../javascript/pages/headerAndFooter.js"></script>
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/conversations.css">
+    <link rel="stylesheet" href="../css/buttons.css">
+    <link rel="stylesheet" href="../css/postCards.css">
+    <script type="module" src="../javascript/objects/post.js"></script>
+    <script type="module" src="../javascript/pages/conversations.js"></script>
+    <script type="module" src="../javascript/objects/token.js"></script>
+    <script type="module" src="../javascript/functionsSpecific/addOnPost.js"></script>
+    <script type="module" src="../javascript/functionsSpecific/addOnShowFriends.js"></script>
+    <script type="module" src="../javascript/functionsSpecific/formatDate.js"></script>
+    <script type="module" src="../javascript/functionsSpecific/getUsersProfilePicture.js"></script>
+</head>
+<body>
+    <main>
+        <section class="posts-container">
+            <button class="primaryBtn" id="openConversationFormBtn">Start new conversation +</button>
+            <div id="conversationForm" class="conversation-form hiddenForm">
+                <input type="text" id="conversationUserIdInput" class="conversation-userId-input" placeholder="Enter userId to message">
+                <textarea name="messageText" id="messageTextInput" class="message-text-textarea" placeholder="Write your first message here!"></textarea>
+                <div>
+                    <button class="primaryBtn" id="createConversationBtn">Create</button>
+                    <button class="secondaryBtn" id="cancelConversationBtn">Cancel</button>
+                </div>
+            </div>
+            <h1>Conversations board</h1>
+            <articles id="conversations">
+                <!-- fills through javascripts-->
+            </articles>
+        </section>
+    </main>
+    <div id="toast"></div>
+</body>
+</html>
